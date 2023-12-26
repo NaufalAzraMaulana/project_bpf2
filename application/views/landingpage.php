@@ -108,8 +108,9 @@
           <h2>Welcome to <span>Impact</span></h2>
           <p>Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started">Get Started</a>
-            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+            <a href="<?= base_url('auth'); ?>" class="btn-get-started">Sign In</a>
+            <a href="<?= base_url('auth/register'); ?>" class="btn-get-started">Sign Up</a>
+            <!-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> -->
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
