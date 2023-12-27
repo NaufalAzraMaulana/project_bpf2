@@ -1,36 +1,22 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
-
-     public function __construct() {
+class Auth extends CI_Controller
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('Auth_model');
     }
-	public function index()
-	{
-		$this->load->view('layout/auth_header');
-		$this->load->view('auth/login');
-		$this->load->view('layout/auth_footer');
-	}
+    public function index()
+    {
+        $this->load->view('layout/auth_header');
+        $this->load->view('auth/login');
+        $this->load->view('layout/auth_footer');
+    }
 
-    public function login() {
+    public function login()
+    {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
@@ -55,21 +41,24 @@ class Auth extends CI_Controller {
                 ];
 
                 $this->session->set_userdata($data);
-                redirect('Landingpage'); // Change 'dashboard' to your desired redirect URL
+
+                // Redirect to the survey page
+                redirect('Pelamar/survey');
             } else {
                 // Incorrect email or password
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong email or password!</div>');
-                redirect('auth');
+                redirect('Auth');
             }
         }
     }
-	public function register()
-	{
-		$this->load->view('layout/auth_header');
-		$this->load->view('auth/registrasi');
-		$this->load->view('layout/auth_footer');
-	}
-    public function do_register() {
+    public function register()
+    {
+        $this->load->view('layout/auth_header');
+        $this->load->view('auth/registrasi');
+        $this->load->view('layout/auth_footer');
+    }
+    public function do_register()
+    {
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'trim|required');
         $this->form_validation->set_rules('email', 'Alamat Email', 'trim|required|valid_email|is_unique[pelamar.email]');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
@@ -95,12 +84,5 @@ class Auth extends CI_Controller {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Registrasi berhasil! Silakan login.</div>');
             redirect('Auth');
         }
-}
-public function survey()
-	{
-
-		$this->load->view('pelamar/survey');
-
-	}
-
+    }
 }

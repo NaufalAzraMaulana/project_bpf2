@@ -6,8 +6,7 @@
           <h2>Selamat Datang di<span>Educareer</span></h2>
           <p>Tempat di mana harapan pendidikan dan impian karirmu menjadi kenyataan! Bersiaplah untuk memulai perjalanan mendalam menuju sukses dengan panduan dan sumber daya terkini yang kami sediakan.</p>
           <div class="d-flex justify-content-center justify-content-lg-start">
-              <a href="<?= base_url('auth') ?>" class="btn-get-started ms-5">Log In</a>
-              <a href="<?= base_url('auth/register') ?>" class="btn-get-started ms-5"><span>Register</span></a>
+          <a href="<?= base_url('#') ?>" class="glightbox btn-watch-video d-flex align-items-center"><span>Mulai Sekarang!</span></a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">

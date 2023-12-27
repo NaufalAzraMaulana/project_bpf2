@@ -21,34 +21,30 @@
         <div class="row gy-4 mt-5">
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon-box">  
-              <h4 class="title"><a href="" class="stretched-link">Informasi</a></h4>
+            <div class="icon-box">
               <div class="icon"><i class="bi bi-easel"></i></div>
-              <h5 style="color: white;"><b><?= $articleCount ?></b></h5>
+              <h4 class="title"><a href="" class="stretched-link">Perusahaan</a></h4>
             </div>
           </div><!--End Icon Box -->
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box">
-              <h4 class="title"><a href="" class="stretched-link">Pelatihan</a></h4>
               <div class="icon"><i class="bi bi-gem"></i></div>
-              <h5 style="color: white;"><b><?= $trainingCount ?></b></h5>
+              <h4 class="title"><a href="" class="stretched-link">Pelamar</a></h4>
             </div>
           </div><!--End Icon Box -->
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
-              <h4 class="title"><a href="" class="stretched-link">Pelamar</a></h4>
               <div class="icon"><i class="bi bi-geo-alt"></i></div>
-              <h5 style="color: white;"><b><?= $applicantCount ?></b></h5>
+              <h4 class="title"><a href="" class="stretched-link">Pelatihan</a></h4>
             </div>
           </div><!--End Icon Box -->
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box">
-              <h4 class="title"><a href="" class="stretched-link">Pekerjaan</a></h4>
               <div class="icon"><i class="bi bi-command"></i></div>
-              <h5 style="color: white;"><b><?= $jobCount ?></b></h5>
+              <h4 class="title"><a href="" class="stretched-link">Pekerjaan</a></h4>
             </div>
           </div><!--End Icon Box -->
 
