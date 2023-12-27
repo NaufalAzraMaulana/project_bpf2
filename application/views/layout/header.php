@@ -40,11 +40,11 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#">Beranda</a></li>
-          <li><a href="#">Artikel</a></li>
-          <li><a href="#">Kursus</a></li>
-          <li><a href="#">Lowongan Kerja</a></li>
-          <li><a href="#">Profil</a></li>
+          <li><a href="<?= site_url('#') ?>">Beranda</a></li>
+          <li><a href="<?= site_url('Pelamar/artikel') ?>">Artikel</a></li>
+          <li><a href="<?= site_url('Pelamar/') ?>">Kursus</a></li>
+          <li><a href="<?= site_url('Pelamar/') ?>">Lowongan Kerja</a></li>
+          <li><a href="<?= site_url('Pelamar/') ?>">Profil</a></li>
         </ul>
       </nav><!-- .navbar -->
 

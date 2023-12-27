@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
-          <img src="assets/img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
+          <img src="<?= base_url('assets/') ?>img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
         </div>
       </div>
     </div>
@@ -74,7 +74,7 @@
         <div class="row gy-4">
           <div class="col-lg-6">
             <h3>Mari bersama-sama menjelajahi dan meraih pencapaian terbesar Anda!</h3>
-            <img src="assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
+            <img src="<?= base_url('assets/') ?>img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
             <p>Dengan menyediakan akses ke informasi terkini tentang program pendidikan, peluang pekerjaan, dan tren pasar kerja, kami bertujuan untuk mengurangi kesenjangan antara pendidikan dan kebutuhan industri. Di EduCareer, kami memahami bahwa setiap individu memiliki potensi unik dan tujuan yang berbeda-beda.</p>
             <p>Di EduCareer, kami menyediakan lebih dari sekadar informasi, kami memberikan kunci untuk membuka potensi terbaik Anda. Temukan peluang, tingkatkan keterampilan, dan raih tujuan karir Anda dengan bimbingan kami.</p>
           </div>
@@ -93,7 +93,7 @@
               </p>
 
               <div class="position-relative mt-4">
-                <img src="assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
+                <img src="<?= base_url('assets/') ?>img/about-2.jpg" class="img-fluid rounded-4" alt="">
                 <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
               </div>
             </div>

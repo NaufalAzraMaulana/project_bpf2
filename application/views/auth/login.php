@@ -11,7 +11,7 @@
                 <div class="signin-form">
                     <h2 class="form-title">Halaman Login</h2>
                     <?= $this->session->flashdata('message'); ?>
-                    <form method="POST" class="register-form" id="login-form" action="<?= base_url('Pelamar/survey'); ?>">
+                    <form method="POST" class="register-form" id="login-form" action="<?= base_url('Pelamar/home'); ?>">
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="text" name="email" value="<?= set_value('email'); ?>" id="email" placeholder="Email" />
