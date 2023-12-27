@@ -5,13 +5,13 @@
                 <div class="signin-image">
                     <figure><img src="<?= base_url('assets/'); ?>registration/images/signin-image.jpg" alt="sing up image">
                     </figure>
-                    <a href="<?= base_url('Auth/registrasi') ?>" class="signup-image-link">Belum memiliki akun? Buat
+                    <a href="<?= base_url('Auth/register') ?>" class="signup-image-link">Belum memiliki akun? Buat
                         akun</a>
                 </div>
                 <div class="signin-form">
                     <h2 class="form-title">Halaman Login</h2>
                     <?= $this->session->flashdata('message'); ?>
-                    <form method="POST" class="register-form" id="login-form" action="<?= base_url('auth/'); ?>">
+                    <form method="POST" class="register-form" id="login-form" action="<?= base_url('auth/login'); ?>">
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="text" name="email" value="<?= set_value('email'); ?>" id="email" placeholder="Email" />

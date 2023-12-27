@@ -5,7 +5,7 @@
                 <div class="signup-form">
                     <h2 class="form-title">Buat Akun</h2>
                     <form method="POST" class="register-form" id="register-form"
-                        action="<?= base_url('auth/registrasi'); ?>">
+                        action="<?= base_url('auth/do_register'); ?>">
                         <div class="form-group">
                             <label for="nama"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="text" name="nama" value="<?= set_value('nama'); ?>" id="nama" placeholder="Nama Lengkap" />
