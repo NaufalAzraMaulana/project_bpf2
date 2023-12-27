@@ -11,8 +11,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?= base_url('asset/'); ?>assets/img/favicon.png" rel="icon">
-  <link href="<?= base_url('asset/'); ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<?= base_url(); ?>assets/img/favicon.png" rel="icon">
+  <link href="<?= base_url(); ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,14 +20,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<?= base_url('asset/'); ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url('asset/'); ?>assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?= base_url('asset/'); ?>assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="<?= base_url('asset/'); ?>assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="<?= base_url('asset/'); ?>assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="<?= base_url('asset/'); ?>assets/css/main.css" rel="stylesheet">
+  <link href="<?= base_url(); ?>assets/css/main.css" rel="stylesheet">
 
   <style>
     
@@ -69,25 +69,29 @@
 
         <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item  position-relative">
-              <div class="icon">
-              <i class="bi bi-laptop"></i>>
-              </div>
-              <h3>Teknologi Informasi</h3>
-              <!-- <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
-            </div>
-          </div><!-- End Service Item -->
-
+        <div class="col-lg-4 col-md-6">
+   <div class="service-item position-relative">
+      <div class="icon">
+         <i class="bi bi-laptop"></i>
+      </div>
+      <h3>Teknologi Informasi</h3>
+      <!-- Form for Teknologi Informasi -->
+      <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+         <input type="hidden" name="talent" value="Teknologi Informasi">
+         <button type="submit" class="btn btn-primary">Select</button>
+      </form>
+   </div>
+</div>
           <div class="col-lg-4 col-md-6">
             <div class="service-item position-relative">
               <div class="icon">
               <i class="bi bi-flower1"></i>
               </div>
               <h3>Pertanian</h3>
-              <!-- <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
+              <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+         <input type="hidden" name="talent" value="Pertanian">
+         <button type="submit" class="btn btn-primary">Select</button>
+      </form>
             </div>
           </div><!-- End Service Item -->
 
@@ -97,8 +101,10 @@
               <i class="bi bi-cash-coin"></i>
               </div>
               <h3>Keuangan</h3>
-              <!-- <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
+              <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+         <input type="hidden" name="talent" value="Keuangan">
+         <button type="submit" class="btn btn-primary">Select</button>
+      </form>
             </div>
           </div><!-- End Service Item -->
 
@@ -108,8 +114,10 @@
               <i class="bi bi-building-up"></i>
               </div>
               <h3>Infrastuktur atau Sipil</h3>
-              <!-- <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
+              <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+         <input type="hidden" name="talent" value="Infrastruktur dan Sipil">
+         <button type="submit" class="btn btn-primary">Select</button>
+      </form>
             </div>
           </div><!-- End Service Item -->
 
@@ -119,8 +127,10 @@
               <i class="bi bi-shop"></i>
               </div>
               <h3>Pemasaran</h3>
-              <!-- <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
+              <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+         <input type="hidden" name="talent" value="Pemasaran">
+         <button type="submit" class="btn btn-primary">Select</button>
+      </form>
             </div>
           </div><!-- End Service Item -->
 
@@ -130,15 +140,23 @@
               <i class="bi bi-gear-fill"></i>
               </div>
               <h3>Otomotif</h3>
-              <!-- <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
+              <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+         <input type="hidden" name="talent" value="Otomotif">
+         <button type="submit" class="btn btn-primary">Select</button>
+      </form>
             </div>
           </div><!-- End Service Item -->
 
         </div>
-
+        <div class="d-flex justify-content-end mt-4">
+    <a href="<?= base_url('pelamar/home')?>" class="btn btn-success btn-submit">Submit</a>
+  </div>
       </div>
+      
+      
     </section><!-- End Our Services Section -->
+
+    
 
     
     <div class="container mt-4">
@@ -162,16 +180,16 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="<?= base_url('asset/'); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?= base_url('asset/'); ?>assets/vendor/aos/aos.js"></script>
-  <script src="<?= base_url('asset/'); ?>assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="<?= base_url('asset/'); ?>assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="<?= base_url('asset/'); ?>assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="<?= base_url('asset/'); ?>assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="<?= base_url('asset/'); ?>assets/vendor/php-email-form/validate.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/aos/aos.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="<?= base_url('asset/'); ?>assets/js/main.js"></script>
+  <script src="<?= base_url(); ?>assets/js/main.js"></script>
 
 </body>
 

@@ -8,9 +8,12 @@
     <title>Log In Form</title>
     <!-- Font Icon -->
     <link rel="stylesheet"
-        href="<?= base_url('asset_login/') ?>registration/fonts/material-icon/css/material-design-iconic-font.min.css">
+        href="<?= base_url('assets/') ?>registration/fonts/material-icon/css/material-design-iconic-font.min.css">
     <!-- Main css -->
-    <link rel="stylesheet" href="<?= base_url('asset_login/') ?>registration/css/style.css">
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>registration/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
+    <!-- Add this in the script section of your HTML -->
+

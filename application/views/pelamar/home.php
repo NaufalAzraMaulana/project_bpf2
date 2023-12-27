@@ -1,96 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>EduCareer : Empowering Futures</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="<?= base_url('assets/') ?>img/favicon.png" rel="icon">
-  <link href="<?= base_url('assets/') ?>img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="<?= base_url('assets/') ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/aos/aos.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="<?= base_url('assets/') ?>vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="<?= base_url('assets/') ?>css/main.css" rel="stylesheet">
-
-  <style>
-    .btn-submit {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #28a745; /* Green color */
-    color: #fff; /* White text */
-    transition: background-color 0.3s ease;
-  }
-
-  .btn-submit:hover {
-    background-color: #218838; /* Darker green color on hover */
-  }
-
-   /* Add this style to enhance the dropdown menu */
-   .dropdown-menu {
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .dropdown-item {
-      padding: 10px 20px;
-      font-size: 14px;
-      color: #000; /* Black text */
-      transition: background-color 0.3s ease;
-    }
-
-    .dropdown-item:hover {
-      background-color: #f8f9fa; /* Light gray background on hover */
-    }
-  </style>
-</head>
-
-<body>
-  <header id="header" class="header d-flex align-items-center">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <h1>EduCareer<span>.</span></h1>
-      </a>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="#">Beranda</a></li>
-          <li><a href="#">Artikel</a></li>
-          <li><a href="#">Kursus</a></li>
-          <li><a href="#">Lowongan Kerja</a></li>
-         
-        </ul>
-      </nav>
-
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-    </div>
-  </header><!-- End Header -->
-  <!-- End Header -->
- 
- <!-- ======= Hero Section ======= -->
+  <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
     <div class="container position-relative">
       <div class="row gy-5" data-aos="fade-in">
@@ -98,8 +6,7 @@
           <h2>Selamat Datang di<span>Educareer</span></h2>
           <p>Tempat di mana harapan pendidikan dan impian karirmu menjadi kenyataan! Bersiaplah untuk memulai perjalanan mendalam menuju sukses dengan panduan dan sumber daya terkini yang kami sediakan.</p>
           <div class="d-flex justify-content-center justify-content-lg-start">
-              <a href="<?= base_url('auth') ?>" class="btn-get-started ms-5">Log In</a>
-              <a href="<?= base_url('auth/register') ?>" class="btn-get-started ms-5"><span>Register</span></a>
+          <a href="<?= base_url('#') ?>" class="glightbox btn-watch-video d-flex align-items-center"><span>Mulai Sekarang!</span></a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">

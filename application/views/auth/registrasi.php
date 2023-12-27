@@ -37,7 +37,7 @@
                     </form>
                 </div>
                 <div class="signup-image">
-                    <figure><img src="<?= base_url('asset_login/'); ?>registration/images/signup-image.jpg"
+                    <figure><img src="<?= base_url('assets/'); ?>registration/images/signup-image.jpg"
                             alt="sing up image">
                     </figure>
                     <a href="<?= base_url('Auth'); ?>" class="signup-image-link">Sudah memiliki akun? Login</a>

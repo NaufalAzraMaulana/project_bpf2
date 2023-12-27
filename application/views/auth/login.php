@@ -3,10 +3,11 @@
         <div class="container">
             <div class="signin-content">
                 <div class="signin-image">
-                    <figure><img src="<?= base_url('asset_login/'); ?>registration/images/signin-image.jpg" alt="sing up image">
+                    <figure><img src="<?= base_url('assets/'); ?>registration/images/signin-image.jpg" alt="sing up image">
                     </figure>
                     <a href="<?= base_url('Auth/register') ?>" class="signup-image-link">Belum memiliki akun? Buat
                         akun</a>
+                        <a href="<?= base_url('pelamar') ?>" class="btn btn-danger">Back</a>
                 </div>
                 <div class="signin-form">
                     <h2 class="form-title">Halaman Login</h2>
@@ -44,3 +45,17 @@
         </div>
     </section>
 </div>
+
+<script>
+  $(document).ready(function () {
+    <?php if ($this->session->flashdata('logout_message')): ?>
+      Swal.fire({
+        icon: 'success',
+        title: 'Logout Successful',
+        text: '<?= $this->session->flashdata('logout_message') ?>',
+        showConfirmButton: false,
+        timer: 3000  // Adjust the timer as needed (in milliseconds)
+      });
+    <?php endif; ?>
+  });
+</script>
