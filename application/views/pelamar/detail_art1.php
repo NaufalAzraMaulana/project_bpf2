@@ -30,9 +30,7 @@
                         <div class="post-img">
                             <img src="<?= base_url('assets/img/blog/' . $article['gambar']) ?>" alt="<?= $article['judul'] ?>" class="img-fluid">
                         </div>
-
                         <h2 class="title"><?= $article['judul'] ?></h2>
-
                         <div class="meta-top">
                             <ul>
                                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2023-01-02"><?= $article['tanggal_publikasi'] ?></time></a></li>
@@ -51,51 +49,38 @@
                         </div><!-- End meta bottom -->
                     </article><!-- End blog post -->
                     <br><br>
+                    <!-- Display Comments -->
                     <div class="comments">
-                        <h4 class="comments-count">1 Comments</h4>
-                        <div id="comment-1" class="comment">
-                            <div class="d-flex">
-                                <div class="comment-img"><img src="<?= base_url('assets/') ?>img/blog/comments-1.jpg" alt=""></div>
-                                <div>
-                                    <h5><a href="">Georgia Reader</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                                    <time datetime="2020-01-01">01 Jan,2022</time>
-                                    <p>
-                                        Et rerum totam nisi. Molestiae vel quam dolorum vel voluptatem et et. Est ad aut sapiente quis molestiae est qui cum soluta.
-                                        Vero aut rerum vel. Rerum quos laboriosam placeat ex qui. Sint qui facilis et.
-                                    </p>
+                        <h4 class="comments-count"><?= count($comments) ?> Comments</h4>
+                        <?php foreach ($comments as $comment) : ?>
+                            <div id="comment-<?= $comment['id'] ?>" class="comment">
+                                <div class="comment-header">
+                                    <h5><?= $comment['nama'] ?></h5>
+                                    <span class="comment-date"><?= $comment['created_at'] ?></span>
                                 </div>
-                            </div>
-                        </div><!-- End comment #1 -->
+                                <p><?= $comment['comment'] ?></p>
+                            </div><!-- End comment #<?= $comment['id'] ?> -->
+                        <?php endforeach; ?>
 
+                        <!-- Comment Form -->
                         <div class="reply-form">
                             <h4>Tinggalkan Komentar</h4>
                             <p>Alamat email Anda tidak akan dipublikasikan. Bidang yang harus diisi ditandai *</p>
-                            <form action="">
-                                <div class="row">
-                                    <div class="col-md-6 form-group">
-                                        <input name="name" type="text" class="form-control" placeholder="Nama Anda*">
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <input name="email" type="text" class="form-control" placeholder="Email Anda*">
-                                    </div>
-                                </div>
+                            <form action="<?= site_url('Pelamar/tambah_komentar') ?>" method="post">
+                                <input type="hidden" name="article_id" value="<?= $article['id'] ?>">
+                                <input type="hidden" name="pelamar_id" value="<?= $pelamar_id ?>">
                                 <div class="row">
                                     <div class="col form-group">
                                         <textarea name="comment" class="form-control" placeholder="Komentar Anda*"></textarea>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Kirim Komentar</button>
-
                             </form>
-
                         </div>
-
                     </div><!-- End blog comments -->
-
                 </div>
 
                 <div class="col-lg-4">
-
                     <div class="sidebar">
                         <!-- Sidebar search form -->
                         <div class="sidebar-item search-form">
@@ -114,7 +99,7 @@
                                 <?php endforeach; ?>
                             </ul>
                         </div><!-- End sidebar categories-->
-                        
+
                         <!-- Sidebar recent posts -->
                         <div class="sidebar-item recent-posts">
                             <h3 class="sidebar-title">Artikel Terbaru</h3>
@@ -131,11 +116,8 @@
                             </div>
                         </div><!-- End sidebar recent posts -->
                     </div><!-- End Blog Sidebar -->
-
                 </div>
             </div>
-
         </div>
     </section><!-- End Blog Details Section -->
-
 </main><!-- End #main -->

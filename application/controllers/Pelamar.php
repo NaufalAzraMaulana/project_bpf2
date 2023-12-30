@@ -7,6 +7,7 @@ class Pelamar extends CI_Controller {
         $this->load->model('Dashboard_model');
         $this->load->model('Pelamar_model');
         $this->load->model('Article_model');
+        $this->load->model('Comment_model');
     }
 
     public function index() {
@@ -124,10 +125,11 @@ class Pelamar extends CI_Controller {
     public function detail_artikel($id) {
         // Fetch the selected article by ID
         $data['article'] = $this->Article_model->get_article_by_id($id);
-    
+        $data['comments'] = $this->Comment_model->get_comments_by_article($id);
         // Fetch categories for the sidebar
         $data['categories'] = $this->Article_model->get_categories();
         $data['recent_articles'] = $this->Article_model->get_recent_articles();
+        $data['pelamar_id'] = $this->session->userdata('pelamar_id');
     
         $this->load->view("layout/header");
         $this->load->view("pelamar/detail_art1", $data);
@@ -147,5 +149,22 @@ class Pelamar extends CI_Controller {
         $this->load->view("layout/header");
         $this->load->view("pelamar/artikel", $data);
         $this->load->view("layout/footer");
+    }
+    public function tambah_komentar()
+    {
+        // penambahan komentar dari form
+        $article_id = $this->input->post('article_id');
+        $pelamar_id = $this->input->post('pelamar_id');
+        $comment = $this->input->post('comment');
+
+        $data = array(
+            'article_id' => $article_id,
+            'pelamar_id' => $pelamar_id,
+            'comment' => $comment
+        );
+
+        $this->Comment_model->insert_comment($data);
+
+        redirect('Pelamar/detail_artikel/' . $article_id);
     }
 }
