@@ -1,16 +1,16 @@
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero">
+   <!-- ======= Hero Section ======= -->
+   <section id="hero" class="hero">
     <div class="container position-relative">
       <div class="row gy-5" data-aos="fade-in">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
           <h2>Selamat Datang di<span>Educareer</span></h2>
           <p>Tempat di mana harapan pendidikan dan impian karirmu menjadi kenyataan! Bersiaplah untuk memulai perjalanan mendalam menuju sukses dengan panduan dan sumber daya terkini yang kami sediakan.</p>
           <div class="d-flex justify-content-center justify-content-lg-start">
-          <a href="<?= base_url('#') ?>" class="glightbox btn-watch-video d-flex align-items-center"><span>Mulai Sekarang!</span></a>
+            <h5 style="color: white;">Mulai Sekarang!</h5>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
-          <img src="assets/img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
+          <img src="<?= base_url('assets/') ?>img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@
         <div class="row gy-4">
           <div class="col-lg-6">
             <h3>Mari bersama-sama menjelajahi dan meraih pencapaian terbesar Anda!</h3>
-            <img src="assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
+            <img src="<?= base_url('assets/') ?>img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
             <p>Dengan menyediakan akses ke informasi terkini tentang program pendidikan, peluang pekerjaan, dan tren pasar kerja, kami bertujuan untuk mengurangi kesenjangan antara pendidikan dan kebutuhan industri. Di EduCareer, kami memahami bahwa setiap individu memiliki potensi unik dan tujuan yang berbeda-beda.</p>
             <p>Di EduCareer, kami menyediakan lebih dari sekadar informasi, kami memberikan kunci untuk membuka potensi terbaik Anda. Temukan peluang, tingkatkan keterampilan, dan raih tujuan karir Anda dengan bimbingan kami.</p>
           </div>
@@ -92,7 +92,7 @@
               </p>
 
               <div class="position-relative mt-4">
-                <img src="assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
+                <img src="<?= base_url('assets/') ?>img/about-2.jpg" class="img-fluid rounded-4" alt="">
                 <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
               </div>
             </div>

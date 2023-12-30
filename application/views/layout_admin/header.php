@@ -132,8 +132,8 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="<?= base_url('pelamar/home')?>">Beranda</a></li>
-          <li><a href="<?= site_url('Pelamar/artikel') ?>">Artikel</a></li>
+          <li><a href="<?= base_url('admin/home')?>">Beranda</a></li>
+          <li><a href="<?= site_url('admin/artikel') ?>">Artikel</a></li>
           <li><a href="#">Kursus</a></li>
           <li><a href="#">Lowongan Kerja</a></li>
           <li>
@@ -142,7 +142,7 @@
                 Setting
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="<?= base_url('pelamar/profile')?>" style="color:#000;padding: 10px 20px; font-size: 14px;">User Profile</a>
+                <a class="dropdown-item" href="<?= base_url('admin/profile')?>" style="color:#000;padding: 10px 20px; font-size: 14px;">User Profile</a>
                 <a class="dropdown-item" href="#" onclick="showLogoutConfirmation()" style="color:#000;padding: 10px 20px; font-size: 14px;">Logout</a>
 
               </div>
