@@ -6,7 +6,7 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Auth_model');
+        $this->load->library('form_validation');
     }
     public function index()
     {
@@ -41,9 +41,16 @@ class Auth extends CI_Controller
                 ];
 
                 $this->session->set_userdata($data);
+                // Check if the user has completed the survey (based on your database structure)
+                $email = $this->session->userdata('email');
+                $user = $this->db->get_where('pelamar', ['email' => $email])->row_array();
 
-                // Redirect to the survey page
-                redirect('Pelamar/survey');
+                if (!$user || empty($user['bakat'])) {
+                    // If the user has not completed the survey, redirect to the survey page
+                    redirect('Pelamar/survey');
+                }else{
+                redirect('pelamar/home');
+                }
             } else {
                 // Incorrect email or password
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong email or password!</div>');
@@ -84,5 +91,16 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Registrasi berhasil! Silakan login.</div>');
             redirect('Auth');
         }
+    }
+    public function logout()
+    {
+        // Perform the logout actions (destroy session, etc.)
+        $this->session->sess_destroy();
+    
+        // Set a flash message
+        $this->session->set_flashdata('logout_message', 'You have been logged out successfully.');
+    
+        // Redirect to a suitable page
+        redirect('auth');
     }
 }

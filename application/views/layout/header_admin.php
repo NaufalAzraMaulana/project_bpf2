@@ -29,7 +29,8 @@
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/') ?>css/main.css" rel="stylesheet">
   <!-- Add this in the head section of your HTML -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
   <style>
     .btn-submit {
@@ -75,62 +76,73 @@
 
     /* Add these styles to your existing CSS file or create a new one */
 
-    /* Profile Card Styles */
-    .profile-card {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      text-align: center;
-    }
+/* Profile Card Styles */
+.profile-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
 
-    /* Profile Image Styles */
-    .profile-image {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 15px;
-    }
+/* Profile Image Styles */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
 
-    /* Profile Name Styles */
-    .profile-name {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #333;
-    }
+/* Profile Name Styles */
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
 
-    /* Profile Email and Skill Styles */
-    .profile-email,
-    .profile-skill {
-      font-size: 16px;
-      color: #666;
-      margin-bottom: 8px;
-    }
+/* Profile Email and Skill Styles */
+.profile-email,
+.profile-skill {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    padding: 20px 0; /* Adjust the padding as needed */
+    text-align: center;
+}
+
+
   </style>
 </head>
 
 <body>
   <header id="header" class="header d-flex align-items-center">
-
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <h1>EduCareer<span>.</span></h1>
       </a>
+
       <nav id="navbar" class="navbar">
         <ul>
-        <li><a href="<?= base_url('pelamar/home')?>">Beranda</a></li>
-          <li><a href="<?= site_url('Pelamar/artikel') ?>">Artikel</a></li>
+          <li><a href="<?= base_url('admin/home')?>">Beranda</a></li>
+          <li><a href="<?= site_url('admin/artikel') ?>">Artikel</a></li>
           <li><a href="#">Kursus</a></li>
           <li><a href="#">Lowongan Kerja</a></li>
           <li>
-          <div class="dropdown">
+            <div class="dropdown">
               <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; border: none;">
                 Setting
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="<?= base_url('pelamar/profile')?>" style="color:#000;padding: 10px 20px; font-size: 14px;">User Profile</a>
+                <a class="dropdown-item" href="<?= base_url('admin/profile')?>" style="color:#000;padding: 10px 20px; font-size: 14px;">User Profile</a>
                 <a class="dropdown-item" href="#" onclick="showLogoutConfirmation()" style="color:#000;padding: 10px 20px; font-size: 14px;">Logout</a>
 
               </div>
@@ -138,15 +150,15 @@
 
           </li>
         </ul>
-      </nav><!-- .navbar -->
+      </nav>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
-  <script>
+  <!-- Add this in the script section of your HTML -->
+<script>
   function showLogoutConfirmation() {
     Swal.fire({
       title: 'yakinn mau Logout??',

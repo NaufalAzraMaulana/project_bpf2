@@ -29,114 +29,131 @@
   <link href="<?= base_url('assets/'); ?>css/main.css" rel="stylesheet">
 
   <style>
+    .container.mt-4 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      /* Center-align text */
+    }
 
-  .container.mt-4 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center; /* Center-align text */
-  }
-
-  .copyright,
-  .credits {
-    margin-top: 10px; /* Add some space between the elements */
-  }
-</style>
+    .copyright,
+    .credits {
+      margin-top: 10px;
+      /* Add some space between the elements */
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ======= Our Services Section ======= -->
-<section id="services" class="services sections-bg">
-      <div class="container" data-aos="fade-up">
+  <!-- ======= Our Services Section ======= -->
+  <section id="services" class="services sections-bg">
+    <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <h2>First Survey</h2>
-          <h3>Apa Bakat atau bidang yang pernah kamu pelajari dan kuasai??</h3>
+      <div class="section-header">
+        <h2>First Survey</h2>
+        <h3>Apa Bakat atau bidang yang pernah kamu pelajari dan kuasai??</h3>
+      </div>
+
+      <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item position-relative">
+            <div class="icon">
+              <i class="bi bi-laptop"></i>
+            </div>
+            <h3>Teknologi Informasi</h3>
+            <!-- Form for Teknologi Informasi -->
+            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+              <input type="hidden" name="talent" value="Teknologi Informasi">
+              <button type="submit" class="btn btn-primary">Select</button>
+            </form>
+          </div>
         </div>
 
-        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item  position-relative">
-              <div class="icon">
-              <i class="bi bi-laptop"></i>>
-              </div>
-              <h3>Teknologi Informasi</h3>
-              <!-- <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item position-relative">
+            <div class="icon">
               <i class="bi bi-flower1"></i>
-              </div>
-              <h3>Pertanian</h3>
-              <!-- <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
             </div>
-          </div><!-- End Service Item -->
+            <h3>Pertanian</h3>
+            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+              <input type="hidden" name="talent" value="Pertanian">
+              <button type="submit" class="btn btn-primary">Select</button>
+            </form>
+          </div>
+        </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item position-relative">
+            <div class="icon">
               <i class="bi bi-cash-coin"></i>
-              </div>
-              <h3>Keuangan</h3>
-              <!-- <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
             </div>
-          </div><!-- End Service Item -->
+            <h3>Keuangan</h3>
+            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+              <input type="hidden" name="talent" value="Keuangan">
+              <button type="submit" class="btn btn-primary">Select</button>
+            </form>
+          </div>
+        </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item position-relative">
+            <div class="icon">
               <i class="bi bi-building-up"></i>
-              </div>
-              <h3>Infrastuktur atau Sipil</h3>
-              <!-- <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
             </div>
-          </div><!-- End Service Item -->
+            <h3>Infrastuktur atau Sipil</h3>
+            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+              <input type="hidden" name="talent" value="Infrastruktur dan Sipil">
+              <button type="submit" class="btn btn-primary">Select</button>
+            </form>
+          </div>
+        </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item position-relative">
+            <div class="icon">
               <i class="bi bi-shop"></i>
-              </div>
-              <h3>Pemasaran</h3>
-              <!-- <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
             </div>
-          </div><!-- End Service Item -->
+            <h3>Pemasaran</h3>
+            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+              <input type="hidden" name="talent" value="Pemasaran">
+              <button type="submit" class="btn btn-primary">Select</button>
+            </form>
+          </div>
+        </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item position-relative">
+            <div class="icon">
               <i class="bi bi-gear-fill"></i>
-              </div>
-              <h3>Otomotif</h3>
-              <!-- <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
             </div>
-          </div><!-- End Service Item -->
-
-        </div>
+            <h3>Otomotif</h3>
+            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+              <input type="hidden" name="talent" value="Otomotif">
+              <button type="submit" class="btn btn-primary">Select</button>
+            </form>
+          </div>
+        </div><!-- End Service Item -->
 
       </div>
-    </section><!-- End Our Services Section -->
-
-
-    <div class="container mt-4">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Impact</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-      Designed by Tasyamanda & Naufal Azra
-      </div>
+      <div class="d-flex justify-content-end mt-4">
+    <a href="<?= base_url('pelamar/home')?>" class="btn btn-success btn-submit">Submit</a>
+  </div>
     </div>
+  </section><!-- End Our Services Section -->
+
+
+  <div class="container mt-4">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Impact</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      Designed by Tasyamanda & Naufal Azra
+    </div>
+  </div>
 
   </footer><!-- End Footer -->
   <!-- End Footer -->
