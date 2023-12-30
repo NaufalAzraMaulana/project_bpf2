@@ -48,12 +48,6 @@
                             <ul class="cats">
                                 <li><a href="#"><?= $article['jenis'] ?></a></li>
                             </ul>
-                            <i class="bi bi-tags"></i>
-                            <ul class="tags">
-                                <li><a href="#">Artificial Intelligence</a></li>
-                                <li><a href="#">Maps</a></li>
-                                <li><a href="#">Location</a></li>
-                            </ul>
                         </div><!-- End meta bottom -->
                     </article><!-- End blog post -->
                     <br><br>
@@ -115,20 +109,15 @@
                         <div class="sidebar-item categories">
                             <h3 class="sidebar-title">Kategori</h3>
                             <ul class="mt-3">
-                                <li><a href="#">Umum <span>(1)</span></a></li>
-                                <li><a href="#">Teknologi <span>(1)</span></a></li>
-                                <li><a href="#">Marketing <span>(1)</span></a></li>
-                                <li><a href="#">Desain <span>(1)</span></a></li>
-                                <li><a href="#">Bisnis <span>(1)</span></a></li>
-                                <li><a href="#">Pendidikan <span>(1)</span></a></li>
+                                <?php foreach ($categories as $category) : ?>
+                                    <li><a href="<?= site_url('Pelamar/artikel_by_category/' . urlencode($category['jenis'])) ?>"><?= $category['jenis'] ?></a></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div><!-- End sidebar categories-->
 
                         <div class="sidebar-item recent-posts">
                             <h3 class="sidebar-title">Artikel Terbaru</h3>
-
                             <div class="mt-3">
-
                                 <div class="post-item mt-3">
                                     <img src="<?= base_url('assets/') ?>img/blog/blog-recent-1.jpg" alt="">
                                     <div>
@@ -136,60 +125,9 @@
                                         <time datetime="2020-01-01">Jan 1, 2020</time>
                                     </div>
                                 </div><!-- End recent post item-->
-
-                                <div class="post-item">
-                                    <img src="<?= base_url('assets/') ?>img/blog/blog-recent-2.jpg" alt="">
-                                    <div>
-                                        <h4><a href="blog-details.html">Quidem autem et impedit</a></h4>
-                                        <time datetime="2020-01-01">Jan 1, 2020</time>
-                                    </div>
-                                </div><!-- End recent post item-->
-
-                                <div class="post-item">
-                                    <img src="<?= base_url('assets/') ?>img/blog/blog-recent-3.jpg" alt="">
-                                    <div>
-                                        <h4><a href="blog-details.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                                        <time datetime="2020-01-01">Jan 1, 2020</time>
-                                    </div>
-                                </div><!-- End recent post item-->
-
-                                <div class="post-item">
-                                    <img src="<?= base_url('assets/') ?>img/blog/blog-recent-4.jpg" alt="">
-                                    <div>
-                                        <h4><a href="blog-details.html">Laborum corporis quo dara net para</a></h4>
-                                        <time datetime="2020-01-01">Jan 1, 2020</time>
-                                    </div>
-                                </div><!-- End recent post item-->
-
-                                <div class="post-item">
-                                    <img src="<?= base_url('assets/') ?>img/blog/blog-recent-5.jpg" alt="">
-                                    <div>
-                                        <h4><a href="blog-details.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                                        <time datetime="2020-01-01">Jan 1, 2020</time>
-                                    </div>
-                                </div><!-- End recent post item-->
-
                             </div>
 
                         </div><!-- End sidebar recent posts-->
-
-                        <div class="sidebar-item tags">
-                            <h3 class="sidebar-title">Tag</h3>
-                            <ul class="mt-3">
-                                <li><a href="#">App</a></li>
-                                <li><a href="#">IT</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Mac</a></li>
-                                <li><a href="#">Design</a></li>
-                                <li><a href="#">Office</a></li>
-                                <li><a href="#">Creative</a></li>
-                                <li><a href="#">Studio</a></li>
-                                <li><a href="#">Smart</a></li>
-                                <li><a href="#">Tips</a></li>
-                                <li><a href="#">Marketing</a></li>
-                            </ul>
-                        </div><!-- End sidebar tags-->
-
                     </div><!-- End Blog Sidebar -->
 
                 </div>

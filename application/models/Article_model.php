@@ -23,4 +23,14 @@ class Article_model extends CI_Model {
     
         return $this->db->get('articles')->result_array();
     }
+    public function get_categories() {
+        $this->db->select('jenis');
+        $this->db->distinct();
+        $result = $this->db->get('articles')->result_array();
+        return $result;
+    }
+    public function get_articles_by_category($category) {
+        $this->db->where('jenis', $category);
+        return $this->db->get('articles')->result_array();
+    }
 }

@@ -113,8 +113,9 @@ class Pelamar extends CI_Controller {
         redirect('pelamar/profile');
     }
     public function artikel() {
-        // Fetch articles from the model
         $data['articles'] = $this->Article_model->get_articles();
+        $data['categories'] = $this->Article_model->get_categories();
+    
         $this->load->view("layout/header");
         $this->load->view("pelamar/artikel", $data);
         $this->load->view("layout/footer");
@@ -123,6 +124,9 @@ class Pelamar extends CI_Controller {
         // Fetch the selected article by ID
         $data['article'] = $this->Article_model->get_article_by_id($id);
     
+        // Fetch categories for the sidebar
+        $data['categories'] = $this->Article_model->get_categories();
+    
         $this->load->view("layout/header");
         $this->load->view("pelamar/detail_art1", $data);
         $this->load->view("layout/footer");
@@ -130,6 +134,13 @@ class Pelamar extends CI_Controller {
     public function cari_artikel() {
         $keyword = $this->input->post('keyword');
         $data['articles'] = $this->Article_model->search_articles($keyword);
+    
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/artikel", $data);
+        $this->load->view("layout/footer");
+    }
+    public function artikel_by_category($category) {
+        $data['articles'] = $this->Article_model->get_articles_by_category(urldecode($category));
     
         $this->load->view("layout/header");
         $this->load->view("pelamar/artikel", $data);
