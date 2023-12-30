@@ -115,6 +115,7 @@ class Pelamar extends CI_Controller {
     public function artikel() {
         $data['articles'] = $this->Article_model->get_articles();
         $data['categories'] = $this->Article_model->get_categories();
+        $data['recent_articles'] = $this->Article_model->get_recent_articles();
     
         $this->load->view("layout/header");
         $this->load->view("pelamar/artikel", $data);
@@ -126,6 +127,7 @@ class Pelamar extends CI_Controller {
     
         // Fetch categories for the sidebar
         $data['categories'] = $this->Article_model->get_categories();
+        $data['recent_articles'] = $this->Article_model->get_recent_articles();
     
         $this->load->view("layout/header");
         $this->load->view("pelamar/detail_art1", $data);

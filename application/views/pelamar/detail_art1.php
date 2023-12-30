@@ -114,20 +114,22 @@
                                 <?php endforeach; ?>
                             </ul>
                         </div><!-- End sidebar categories-->
-
+                        
+                        <!-- Sidebar recent posts -->
                         <div class="sidebar-item recent-posts">
                             <h3 class="sidebar-title">Artikel Terbaru</h3>
                             <div class="mt-3">
-                                <div class="post-item mt-3">
-                                    <img src="<?= base_url('assets/') ?>img/blog/blog-recent-1.jpg" alt="">
-                                    <div>
-                                        <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
-                                        <time datetime="2020-01-01">Jan 1, 2020</time>
-                                    </div>
-                                </div><!-- End recent post item-->
+                                <?php foreach ($recent_articles as $recent_article) : ?>
+                                    <div class="post-item mt-3">
+                                        <img src="<?= base_url('assets/') ?>img/blog/<?= $recent_article['gambar'] ?>" alt="">
+                                        <div>
+                                            <h4><a href="<?= site_url('Pelamar/detail_artikel/' . $recent_article['id']) ?>"><?= $recent_article['judul'] ?></a></h4>
+                                            <time datetime="<?= $recent_article['tanggal_publikasi'] ?>"><?= $recent_article['tanggal_publikasi'] ?></time>
+                                        </div>
+                                    </div><!-- End recent post item-->
+                                <?php endforeach; ?>
                             </div>
-
-                        </div><!-- End sidebar recent posts-->
+                        </div><!-- End sidebar recent posts -->
                     </div><!-- End Blog Sidebar -->
 
                 </div>
