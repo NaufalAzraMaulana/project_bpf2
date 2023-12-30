@@ -19,9 +19,9 @@ class Admin extends CI_Controller
         $data['applicantCount'] = $this->Dashboard_model->getApplicantCount();
         $data['jobCount'] = $this->Dashboard_model->getJobCount();
 
-        // $this->load->view("layout/header");
+        $this->load->view("layout/header_admin");
         $this->load->view("landingpage", $data);
-        $this->load->view("layout/footer");
+        $this->load->view("layout/footer_admin");
     }
     public function survey()
     {
@@ -151,14 +151,14 @@ class Admin extends CI_Controller
             // Redirect to the login page if not logged in as admin
             redirect('Auth');
         }
-
+    
         // Form validation
         $this->form_validation->set_rules('judul', 'Judul', 'trim|required');
         $this->form_validation->set_rules('jenis', 'Jenis', 'trim|required');
         $this->form_validation->set_rules('isi', 'Isi', 'trim|required');
         $this->form_validation->set_rules('hari', 'Hari', 'trim|required');
         $this->form_validation->set_rules('tanggal_publikasi', 'Tanggal Publikasi', 'trim|required');
-
+    
         if ($this->form_validation->run() == false) {
             // If validation fails, reload the form
             $this->load->view("layout_admin/header");
@@ -173,7 +173,7 @@ class Admin extends CI_Controller
                 'hari' => $this->input->post('hari'),
                 'tanggal_publikasi' => $this->input->post('tanggal_publikasi'),
             ];
-
+    
             // File upload configuration
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = 2048;
@@ -181,9 +181,9 @@ class Admin extends CI_Controller
             $config['overwrite'] = true;
             $config['max_width'] = 1080;
             $config['max_height'] = 1080;
-
+    
             $this->load->library('upload', $config);
-
+    
             if ($this->upload->do_upload('gambar')) {
                 // If upload successful, get the uploaded file name
                 $new_image = $this->upload->data('file_name');
@@ -194,13 +194,13 @@ class Admin extends CI_Controller
                 $this->session->set_flashdata('error_message', $error);
                 // redirect('Admin/add_article');
             }
-
+    
             // Insert data into the database
             $this->Article_model->insert_article($data);
-
+    
             // Redirect to the admin page or another appropriate page
             redirect('Admin/home');
         }
     }
-
+    
 }

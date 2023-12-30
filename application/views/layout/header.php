@@ -29,7 +29,7 @@
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/') ?>css/main.css" rel="stylesheet">
   <!-- Add this in the head section of your HTML -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  
 
   <style>
     .btn-submit {
@@ -120,8 +120,8 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-        <li><a href="<?= base_url('pelamar/home')?>">Beranda</a></li>
-          <li><a href="<?= site_url('Pelamar/artikel') ?>">Artikel</a></li>
+          <li><a href="<?= base_url('pelamar/home')?>">Beranda</a></li>
+          <li><a href="<?= base_url('pelamar/artikel')?>">Artikel</a></li>
           <li><a href="#">Kursus</a></li>
           <li><a href="#">Lowongan Kerja</a></li>
           <li>

@@ -16,4 +16,11 @@ class Article_model extends CI_Model {
         $this->db->insert('articles', $data);
         return $this->db->insert_id(); // Return the inserted article's ID
     }
+    public function search_articles($keyword) {
+        $this->db->like('judul', $keyword);
+        $this->db->or_like('jenis', $keyword);
+        // Tambahkan kondisi pencarian untuk kolom lain jika diperlukan
+    
+        return $this->db->get('articles')->result_array();
+    }
 }

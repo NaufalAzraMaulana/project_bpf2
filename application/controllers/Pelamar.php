@@ -6,7 +6,6 @@ class Pelamar extends CI_Controller {
         parent::__construct();
         $this->load->model('Dashboard_model');
         $this->load->model('Pelamar_model');
-        // Load the Article_model
         $this->load->model('Article_model');
     }
 
@@ -126,6 +125,14 @@ class Pelamar extends CI_Controller {
     
         $this->load->view("layout/header");
         $this->load->view("pelamar/detail_art1", $data);
+        $this->load->view("layout/footer");
+    }
+    public function cari_artikel() {
+        $keyword = $this->input->post('keyword');
+        $data['articles'] = $this->Article_model->search_articles($keyword);
+    
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/artikel", $data);
         $this->load->view("layout/footer");
     }
 }

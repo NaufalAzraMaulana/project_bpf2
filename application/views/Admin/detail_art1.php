@@ -1,24 +1,23 @@
 <main id="main">
-    <br>
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-        <div class="page-header d-flex align-items-center" style="background-image: url('');">
-            <div class="container position-relative">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <h2>Detail Artikel</h2>
-                    </div>
-                </div>
+      <div class="page-header d-flex align-items-center" style="background-image: url('');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>Detail Artikel</h2>
             </div>
+          </div>
         </div>
-        <nav>
-            <div class="container">
-                <ol>
-                    <li><a href="<?= site_url('Pelamar/home') ?>">Beranda</a></li>
-                    <li>Detail Artikel</li>
-                </ol>
-            </div>
-        </nav>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+          <li><a href="<?= site_url('Pelamar/home') ?>">Beranda</a></li>
+            <li>Detail Artikel</li>
+          </ol>
+        </div>
+      </nav>
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Blog Details Section ======= -->
@@ -43,19 +42,19 @@
                         <div class="content">
                             <p><?= $article['isi'] ?></p>
                         </div><!-- End post content -->
-                        <div class="meta-bottom">
-                            <i class="bi bi-folder"></i>
-                            <ul class="cats">
-                                <li><a href="#"><?= $article['jenis'] ?></a></li>
-                            </ul>
-                            <i class="bi bi-tags"></i>
-                            <ul class="tags">
-                                <li><a href="#">Artificial Intelligence</a></li>
-                                <li><a href="#">Maps</a></li>
-                                <li><a href="#">Location</a></li>
-                            </ul>
-                        </div><!-- End meta bottom -->
-                    </article><!-- End blog post -->
+                            <div class="meta-bottom">
+                                <i class="bi bi-folder"></i>
+                                <ul class="cats">
+                                    <li><a href="#"><?= $article['jenis'] ?></a></li>
+                                </ul>
+                                <i class="bi bi-tags"></i>
+                                <ul class="tags">
+                                    <li><a href="#">Artificial Intelligence</a></li>
+                                    <li><a href="#">Maps</a></li>
+                                    <li><a href="#">Location</a></li>
+                                </ul>
+                            </div><!-- End meta bottom -->
+                        </article><!-- End blog post -->
                     <br><br>
                     <div class="comments">
                         <h4 class="comments-count">1 Comments</h4>
@@ -103,11 +102,11 @@
                 <div class="col-lg-4">
 
                     <div class="sidebar">
-                        <!-- Sidebar search form -->
+
                         <div class="sidebar-item search-form">
                             <h3 class="sidebar-title">Cari</h3>
-                            <form action="<?= site_url('Pelamar/cari_artikel') ?>" method="post" class="mt-3">
-                                <input type="text" name="keyword" placeholder="Kata kunci">
+                            <form action="" class="mt-3">
+                                <input type="text">
                                 <button type="submit"><i class="bi bi-search"></i></button>
                             </form>
                         </div><!-- End sidebar search formn-->

@@ -41,15 +41,21 @@ class Auth extends CI_Controller
                 ];
 
                 $this->session->set_userdata($data);
-                // Check if the user has completed the survey (based on your database structure)
-                $email = $this->session->userdata('email');
-                $user = $this->db->get_where('pelamar', ['email' => $email])->row_array();
 
-                if (!$user || empty($user['bakat'])) {
-                    // If the user has not completed the survey, redirect to the survey page
-                    redirect('Pelamar/survey');
-                }else{
-                redirect('pelamar/home');
+                // Redirect to the appropriate home page based on the user role
+                if ($user['role'] == 'admin') {
+                    redirect('Admin/home');
+                } else {
+                    // Check if the user has completed the survey (based on your database structure)
+                    $email = $this->session->userdata('email');
+                    $user = $this->db->get_where('pelamar', ['email' => $email])->row_array();
+
+                    if (!$user || empty($user['bakat'])) {
+                        // If the user has not completed the survey, redirect to the survey page
+                        redirect('Pelamar/survey');
+                    } else {
+                        redirect('pelamar/home');
+                    }
                 }
             } else {
                 // Incorrect email or password
@@ -92,14 +98,15 @@ class Auth extends CI_Controller
             redirect('Auth');
         }
     }
+
     public function logout()
     {
         // Perform the logout actions (destroy session, etc.)
         $this->session->sess_destroy();
-    
+
         // Set a flash message
         $this->session->set_flashdata('logout_message', 'You have been logged out successfully.');
-    
+
         // Redirect to a suitable page
         redirect('auth');
     }

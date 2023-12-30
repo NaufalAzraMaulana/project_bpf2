@@ -8,12 +8,6 @@
         <span>EduCareer</span>
       </a>
       <p>Bergabunglah dengan kami di EduCareer dan mari bersama-sama membentuk masa depan pendidikan dan karir yang cerah!</p>
-      <div class="social-links d-flex mt-4">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      </div>
     </div>
 
     <div class="col-lg-7 col-md-12 footer-contact text-center text-md-end">
@@ -52,7 +46,7 @@
 <script src="<?=base_url('assets/')?>vendor/swiper/swiper-bundle.min.js"></script>
 <script src="<?=base_url('assets/')?>vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="<?=base_url('assets/')?>vendor/php-email-form/validate.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- Template Main JS File -->
 <script src="<?=base_url('assets/')?>js/main.js"></script>
 </body>

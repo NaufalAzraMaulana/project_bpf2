@@ -1,10 +1,29 @@
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
 
+<div class="container">
+  <div class="row gy-4">
+    <div class="col-lg-5 col-md-12 footer-info">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <span>EduCareer</span>
+      </a>
+      <p>Bergabunglah dengan kami di EduCareer dan mari bersama-sama membentuk masa depan pendidikan dan karir yang cerah!</p>
+    </div>
+
+    <div class="col-lg-7 col-md-12 footer-contact text-center text-md-end">
+      <h4>Kontak Kami</h4>
+      <p>
+        <strong>Phone:</strong> +628 1234 5678 90<br>
+        <strong>Email:</strong> educareer@edu.co.id<br>
+      </p>
+
+    </div>
+  </div>
+</div>
 
 <div class="container mt-4">
   <div class="copyright">
-    &copy; Copyright <strong><span>Impact</span></strong>. All Rights Reserved
+    &copy; Copyright <strong><span>EduCareer</span></strong>. All Rights Reserved
   </div>
   <div class="credits">
     Designed by Tasyamanda & Naufal Azra
