@@ -41,8 +41,8 @@
         <ul>
           <li><a href="<?= base_url('pelamar/home')?>">Beranda</a></li>
           <li><a href="<?= base_url('pelamar/artikel')?>">Artikel</a></li>
-          <li><a href="#">Kursus</a></li>
-          <li><a href="#">Lowongan Kerja</a></li>
+          <li><a href="<?= base_url('pelamar/kursus')?>">Kursus</a></li>
+          <li><a href="<?= base_url('pelamar/loker')?>">Lowongan Kerja</a></li>
           <li class="dropdown"><a href="#"><span>Setting</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="<?= base_url('pelamar/profile')?>">User Profile</a></li>

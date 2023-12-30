@@ -7,7 +7,7 @@
         <div class="row d-flex justify-content-center">
           <div class="col-lg-6 text-center">
             <h2>Artikel</h2>
-            <p>Temukan wawasan mendalam tentang tren industri, panduan karir, dan tips sukses. Dari pembelajaran keterampilan kunci hingga pemahaman mendalam tentang perubahan pasar kerja, Artikel EduCareer hadir untuk membimbing Anda menuju kesuksesan. Teruslah membaca, teruslah berkembang, dan temukan inspirasi untuk memajukan pendidikan dan karir Anda.</p>
+            <p>Temukan wawasan mendalam tentang tren industri, panduan karir, dan tips sukses. Dari pembelajaran keterampilan kunci hingga pemahaman mendalam tentang perubahan pasar kerja. Teruslah membaca, teruslah berkembang, dan temukan inspirasi untuk memajukan pendidikan dan karir Anda.</p>
           </div>
         </div>
       </div>

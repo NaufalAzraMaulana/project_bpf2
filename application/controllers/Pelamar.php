@@ -167,4 +167,24 @@ class Pelamar extends CI_Controller {
 
         redirect('Pelamar/detail_artikel/' . $article_id);
     }
+    public function kursus() {
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/kursus");
+        $this->load->view("layout/footer");
+    }
+    public function detail_kursus() {
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/detail_kursus");
+        $this->load->view("layout/footer");
+    }
+    public function loker() {
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/loker");
+        $this->load->view("layout/footer");
+    }
+    public function detail_loker() {
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/detail_loker");
+        $this->load->view("layout/footer");
+    }
 }
