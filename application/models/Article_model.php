@@ -31,4 +31,30 @@ class Article_model extends CI_Model {
         $this->db->limit($limit);
         return $this->db->get('articles')->result_array();
     }
+    public function update_article($id, $judul, $jenis, $isi, $Hari, $tanggal_publikasi, $gambar)
+    {
+        // Update data artikel berdasarkan ID
+        $data = array(
+            'judul' => $judul,
+            'jenis' => $jenis,
+            'isi' => $isi,
+            'Hari' => $Hari,
+            'tanggal_publikasi' => $tanggal_publikasi
+            // tambahkan kolom-kolom lain yang ingin diubah
+        );
+
+        // Jika ada gambar yang diunggah, lakukan pembaruan gambar
+        if (!empty($gambar)) {
+            $data['gambar'] = $gambar;
+        }
+
+        $this->db->where('id', $id);
+        $this->db->update('articles', $data);
+    }
+    public function delete_article($artikelid)
+    {
+        // Hapus data artikel berdasarkan ID
+        $this->db->where('id', $artikelid);
+        $this->db->delete('articles');
+    }
 }

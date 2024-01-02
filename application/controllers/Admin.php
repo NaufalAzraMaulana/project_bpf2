@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 class Admin extends CI_Controller
 {
     public function __construct()
@@ -77,12 +76,22 @@ class Admin extends CI_Controller
     {
         // Retrieve user data from the database (assuming user is logged in)
         $email = $this->session->userdata('email');
-        $data['user'] = $this->Pelamar_model->get_by_email($email);
-        $this->load->view('layout/header');
-        $this->load->view('pelamar/profile', $data);
-        $this->load->view('layout/footer');
+        $data['user'] = $this->Pelamar_model->get_all_pelamar();
+        $this->load->view('layout/header_admin');
+        $this->load->view('admin/profile', $data);
+        $this->load->view('layout/footer_admin');
     }
+    public function delete_profile($pelamarid)
+    {
+        // Call the delete_profile function in Pelamar_model
+        $this->Pelamar_model->delete_profile($pelamarid);
 
+        // Set a flashdata message to indicate successful deletion
+        $this->session->set_flashdata('success', 'Profile has been successfully deleted.');
+
+        // Redirect to the page where you display all user profiles
+        redirect('admin/profile');
+    }
     public function edit_profile()
     {
         // Assuming you have a form to edit 
@@ -134,14 +143,35 @@ class Admin extends CI_Controller
 
     public function artikel()
     {
+        $data['articles'] = $this->Article_model->get_articles();
+        $data['categories'] = $this->Article_model->get_categories();
+        $data['recent_articles'] = $this->Article_model->get_recent_articles();
+
         $this->load->view("layout/header_admin");
-        $this->load->view("admin/add_artikel");
+        $this->load->view("admin/artikel", $data);
         $this->load->view("layout/footer_admin");
     }
-    public function detail_artikel()
+    public function detail_artikel($id)
     {
+        // Fetch the selected article by ID
+        $data['article'] = $this->Article_model->get_article_by_id($id);
+        $data['comments'] = $this->Comment_model->get_comments_by_article($id);
+        // Fetch categories for the sidebar
+        $data['categories'] = $this->Article_model->get_categories();
+        $data['recent_articles'] = $this->Article_model->get_recent_articles();
+        $data['pelamar_id'] = $this->session->userdata('pelamar_id');
+
         $this->load->view("layout/header_admin");
-        $this->load->view("admin/detail_art1");
+        $this->load->view("admin/detail_art1", $data);
+        $this->load->view("layout/footer_admin");
+    }
+
+    public function edit_artikel($id)
+    {
+        $data['article'] = $this->Article_model->get_article_by_id($id);
+
+        $this->load->view("layout/header_admin");
+        $this->load->view("admin/edit_artikel", $data);
         $this->load->view("layout/footer_admin");
     }
 
@@ -149,11 +179,9 @@ class Admin extends CI_Controller
 
     public function add_article()
     {
-        // Check if admin is logged in
-        if (!$this->session->userdata('email') || $this->session->userdata('role') !== 'admin') {
-            // Redirect to the login page if not logged in as admin
-            redirect('Auth');
-        }
+        // if (!$this->session->userdata('email') || $this->session->userdata('role') !== 'admin') {
+        //     redirect('Auth');
+        // }
 
         // Form validation
         $this->form_validation->set_rules('judul', 'Judul', 'trim|required');
@@ -205,12 +233,62 @@ class Admin extends CI_Controller
             redirect('Admin/home');
         }
     }
+
+    public function update_artikel($id)
+    {
+        // Validasi form jika diperlukan
+
+        // Ambil data dari form
+        $judul = $this->input->post('judul');
+        $jenis = $this->input->post('jenis');
+        $isi = $this->input->post('isi');
+        $Hari = $this->input->post('Hari');
+        $tanggal_publikasi = $this->input->post('tanggal_publikasi');
+
+        // Handle unggahan gambar
+        $config['upload_path'] = './path/to/upload/directory/'; // Sesuaikan dengan direktori tempat menyimpan gambar
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 2048; // Sesuaikan dengan batas ukuran gambar
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('gambar')) {
+            $gambar_data = $this->upload->data();
+            $gambar = $gambar_data['file_name'];
+        } else {
+            $gambar = ''; // Jika tidak ada gambar yang diunggah, tetapkan nilai kosong
+        }
+
+        // Update data artikel ke database
+        $this->Article_model->update_article($id, $judul, $jenis, $isi, $Hari, $tanggal_publikasi, $gambar);
+
+        // Redirect ke halaman daftar artikel atau halaman lainnya
+        redirect('Admin/home');
+    }
+
+    // controllers/Admin.php
+
+    public function delete_article($artikelid)
+    {
+        // if (!$this->session->userdata('email') || $this->session->userdata('role') !== 'admin') {
+        //     redirect('Auth');
+        // }
+        // Load model
+        $this->Article_model->delete_article($artikelid);
+
+        // Redirect ke halaman daftar kursus atau halaman lainnya
+        redirect('Admin/home');
+    }
     public function kursus()
     {
+        // $email =$this->session->userdata('email'); // Replace with the actual skill of the logged-in Pelamar
+
+        $data['Kursus_list'] = $this->Kursus_model->get_all_kursus();
         $this->load->view("layout/header_admin");
-        $this->load->view("admin/add_kursus");
+        $this->load->view("admin/adm_kursus", $data);
         $this->load->view("layout/footer_admin");
     }
+
     public function add_kursus()
     {
         // Check if admin is logged in
@@ -247,6 +325,44 @@ class Admin extends CI_Controller
             // Redirect to the admin page or another appropriate page
             redirect('Admin/home');
         }
+    }
+    // controllers/Admin.php
+
+    public function edit_kursus($id)
+    {
+        // Load model
+        $this->load->model('Kursus_model'); // Sesuaikan dengan nama model yang sesuai
+
+        // Ambil data kursus berdasarkan ID
+        $data['Kursus_list'] = $this->Kursus_model->get_kursus_by_id($id);
+
+        // Validasi form jika diperlukan
+        $this->form_validation->set_rules('nama_kursus', 'Nama Kursus', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi Kursus', 'required');
+        $this->form_validation->set_rules('bakat_required', 'Bakat yang Dibutuhkan', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view("layout/header_admin");
+            $this->load->view('admin/edit_kursus', $data);
+            $this->load->view("layout/footer_admin");
+        } else {
+            // Jika validasi berhasil, update data kursus
+            $this->Kursus_model->update_kursus($id);
+
+            // Redirect ke halaman daftar kursus atau halaman lainnya
+            redirect('Admin/home');
+        }
+    }
+
+    public function delete_kursus($id)
+    {
+        // Load model
+
+
+        // Hapus kursus dari database
+        $this->Kursus_model->delete_kursus($id);
+
+        // Redirect ke halaman daftar kursus atau halaman lainnya
+        redirect('Admin/home');
     }
     public function loker()
     {
@@ -346,50 +462,50 @@ class Admin extends CI_Controller
         // }
 
         // Form validation
-    $this->form_validation->set_rules('posisi', 'Posisi', 'trim|required');
-    $this->form_validation->set_rules('perusahaan', 'Perusahaan', 'trim|required');
-    $this->form_validation->set_rules('kriteria', 'Kriteria', 'trim|required');
-    // Add validation rules for new fields
-    $this->form_validation->set_rules('deskripsi_pekerjaan', 'Deskripsi Pekerjaan', 'trim|required');
-    $this->form_validation->set_rules('bakat_required', 'Bakat yang Dibutuhkan', 'trim|required');
-    $this->form_validation->set_rules('pendidikan_required', 'Pendidikan yang Dibutuhkan', 'trim|required');
-    $this->form_validation->set_rules('deskripsi_perusahaan', 'Deskripsi Perusahaan', 'trim|required');
-    $this->form_validation->set_rules('lokasi_kerja', 'Lokasi Kerja', 'trim|required');
-    $this->form_validation->set_rules('kategori', 'Kategori', 'trim|required');
-    $this->form_validation->set_rules('jam_kerja', 'Jam Kerja', 'trim|required');
-    $this->form_validation->set_rules('gaji', 'Gaji', 'trim|required');
-    $this->form_validation->set_rules('link', 'Link', 'trim|required');
+        $this->form_validation->set_rules('posisi', 'Posisi', 'trim|required');
+        $this->form_validation->set_rules('perusahaan', 'Perusahaan', 'trim|required');
+        $this->form_validation->set_rules('kriteria', 'Kriteria', 'trim|required');
+        // Add validation rules for new fields
+        $this->form_validation->set_rules('deskripsi_pekerjaan', 'Deskripsi Pekerjaan', 'trim|required');
+        $this->form_validation->set_rules('bakat_required', 'Bakat yang Dibutuhkan', 'trim|required');
+        $this->form_validation->set_rules('pendidikan_required', 'Pendidikan yang Dibutuhkan', 'trim|required');
+        $this->form_validation->set_rules('deskripsi_perusahaan', 'Deskripsi Perusahaan', 'trim|required');
+        $this->form_validation->set_rules('lokasi_kerja', 'Lokasi Kerja', 'trim|required');
+        $this->form_validation->set_rules('kategori', 'Kategori', 'trim|required');
+        $this->form_validation->set_rules('jam_kerja', 'Jam Kerja', 'trim|required');
+        $this->form_validation->set_rules('gaji', 'Gaji', 'trim|required');
+        $this->form_validation->set_rules('link', 'Link', 'trim|required');
 
-    if ($this->form_validation->run() == false) {
-        // If validation fails, reload the form
-        $this->load->view("layout/header_admin");
-        $this->load->view('admin/edit_loker');
-        $this->load->view("layout/footer_admin");
-    } else {
-        // If validation succeeds, update job posting in the database
-        $data = [
-            'posisi' => $this->input->post('posisi'),
-            'perusahaan' => $this->input->post('perusahaan'),
-            'kriteria' => $this->input->post('kriteria'),
-            'deskripsi_pekerjaan' => $this->input->post('deskripsi_pekerjaan'),
-            'bakat_required' => $this->input->post('bakat_required'),
-            'pendidikan_required' => $this->input->post('pendidikan_required'),
-            // Add other fields as needed
-            'deskripsi_perusahaan' => $this->input->post('deskripsi_perusahaan'),
-            'lokasi_kerja' => $this->input->post('lokasi_kerja'),
-            'kategori' => $this->input->post('kategori'),
-            'jam_kerja' => $this->input->post('jam_kerja'),
-            'gaji' => $this->input->post('gaji'),
-            'link' => $this->input->post('link'),
-        ];
+        if ($this->form_validation->run() == false) {
+            // If validation fails, reload the form
+            $this->load->view("layout/header_admin");
+            $this->load->view('admin/edit_loker');
+            $this->load->view("layout/footer_admin");
+        } else {
+            // If validation succeeds, update job posting in the database
+            $data = [
+                'posisi' => $this->input->post('posisi'),
+                'perusahaan' => $this->input->post('perusahaan'),
+                'kriteria' => $this->input->post('kriteria'),
+                'deskripsi_pekerjaan' => $this->input->post('deskripsi_pekerjaan'),
+                'bakat_required' => $this->input->post('bakat_required'),
+                'pendidikan_required' => $this->input->post('pendidikan_required'),
+                // Add other fields as needed
+                'deskripsi_perusahaan' => $this->input->post('deskripsi_perusahaan'),
+                'lokasi_kerja' => $this->input->post('lokasi_kerja'),
+                'kategori' => $this->input->post('kategori'),
+                'jam_kerja' => $this->input->post('jam_kerja'),
+                'gaji' => $this->input->post('gaji'),
+                'link' => $this->input->post('link'),
+            ];
 
-        // Update data in the database
-        $this->Job_model->update_job($job_id, $data);
+            // Update data in the database
+            $this->Job_model->update_job($job_id, $data);
 
-        // Redirect to the admin page or another appropriate page
-        redirect('Admin/loker');
+            // Redirect to the admin page or another appropriate page
+            redirect('Admin/loker');
+        }
     }
-}
 
     // Delete a job posting
     public function delete_loker($job_id)
