@@ -9,7 +9,7 @@
         <div class="row gy-4">
             <div class="col-lg-6">
                 <div class="profile-card">
-                    <img src="<?= base_url('assets/gambar/' . $user['gambar']); ?>" alt="User Profile Image" class="profile-image">
+                    <img src="<?= base_url('assets/img/' . $user['gambar']); ?>" alt="User Profile Image" class="profile-image">
                     <h3 class="profile-name"><?= $user['nama']; ?></h3>
                     <p class="profile-email">Email: <?= $user['email']; ?></p>
                     <p class="profile-skill">Bakat: <?= $user['bakat']; ?></p>

@@ -28,6 +28,23 @@
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/') ?>css/main.css" rel="stylesheet">
   <!-- Add this in the head section of your HTML -->
+  <style>
+    .portfolio-item {
+      height: 420px;
+    }
+
+    .portfolio-wrap {
+      height: 420px;
+    }
+
+    .job-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* utk nambahin titik-titik */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  </style>
 </head>
 
 <body>
@@ -39,13 +56,13 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="<?= base_url('pelamar/home')?>">Beranda</a></li>
-          <li><a href="<?= base_url('pelamar/artikel')?>">Artikel</a></li>
-          <li><a href="<?= base_url('pelamar/kursus')?>">Kursus</a></li>
-          <li><a href="<?= base_url('pelamar/loker')?>">Lowongan Kerja</a></li>
+          <li><a href="<?= base_url('pelamar/home') ?>">Beranda</a></li>
+          <li><a href="<?= base_url('pelamar/artikel') ?>">Artikel</a></li>
+          <li><a href="<?= base_url('pelamar/kursus') ?>">Kursus</a></li>
+          <li><a href="<?= base_url('pelamar/loker') ?>">Lowongan Kerja</a></li>
           <li class="dropdown"><a href="#"><span>Setting</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="<?= base_url('pelamar/profile')?>">User Profile</a></li>
+              <li><a href="<?= base_url('pelamar/profile') ?>">User Profile</a></li>
               <li><a href="#" onclick="showLogoutConfirmation()">Logout</a></li>
             </ul>
           </li>
@@ -59,20 +76,20 @@
   </header><!-- End Header -->
   <!-- End Header -->
   <script>
-  function showLogoutConfirmation() {
-    Swal.fire({
-      title: 'yakinn mau Logout??',
-      text: 'Kalau iya kamu bakal logout deh:(',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, logout!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Redirect to logout URL if the user clicks "Yes"
-        window.location.href = '<?= base_url('auth/logout') ?>';
-      }
-    });
-  }
-</script>
+    function showLogoutConfirmation() {
+      Swal.fire({
+        title: 'yakinn mau Logout??',
+        text: 'Kalau iya kamu bakal logout deh:(',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, logout!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Redirect to logout URL if the user clicks "Yes"
+          window.location.href = '<?= base_url('auth/logout') ?>';
+        }
+      });
+    }
+  </script>

@@ -22,4 +22,10 @@ class Pelamar_model extends CI_Model
         $this->db->where('email', $email);
         $this->db->update('pelamar', $data);
     }
+    public function get_jobs()
+    {
+        // Fetch job data from the database
+        $query = $this->db->get('jobs');
+        return $query->result_array();
+    }
 }
