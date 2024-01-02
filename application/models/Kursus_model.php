@@ -39,7 +39,8 @@ class Kursus_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
-    public function getKursusByIdPelamar($id) {
+    public function getKursusByIdPelamar($id)
+    {
         $this->db->select('kursus.nama_kursus');
         $this->db->from('pelamar');
         $this->db->join('kursus', 'pelamar.bakat = kursus.bakat_required');
@@ -66,5 +67,31 @@ class Kursus_model extends CI_Model
         $this->db->where('bakat_required', $bakat_required);
         $query = $this->db->get('kursus');
         return $query->result(); // Return the result as an array of objects
+    }
+
+    public function update_kursus($id)
+    {
+        // Validasi form jika diperlukan
+
+        // Ambil data dari form
+        $nama_kursus = $this->input->post('nama_kursus');
+        $deskripsi = $this->input->post('deskripsi');
+        $bakat_required = $this->input->post('bakat_required');
+
+        // Update data kursus ke database
+        $data = [
+            'nama_kursus' => $nama_kursus,
+            'deskripsi' => $deskripsi,
+            'bakat_required' => $bakat_required,
+            // Tambahkan field lainnya jika ada
+        ];
+        $this->db->where('id', $id);
+        $this->db->update('kursus', $data);
+    }
+    public function delete_kursus($id)
+    {
+        // Hapus kursus dari database
+        $this->db->where('id', $id);
+        $this->db->delete('kursus');
     }
 }

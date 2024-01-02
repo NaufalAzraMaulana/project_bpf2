@@ -111,7 +111,7 @@
 }
 
 #footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     width: 100%;
     
@@ -146,7 +146,7 @@
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="<?= base_url('admin/profile')?>" style="color:#000;padding: 10px 20px; font-size: 14px;">User Profile</a>
-                <a class="dropdown-item" href="#" onclick="showLogoutConfirmation()" style="color:#000;padding: 10px 20px; font-size: 14px;">Logout</a>
+                <a class="dropdown-item" href="#" onclick="showLogoutConfirmation2()" style="color:#000;padding: 10px 20px; font-size: 14px;">Logout</a>
 
               </div>
             </div>
@@ -162,7 +162,7 @@
   <!-- End Header -->
   <!-- Add this in the script section of your HTML -->
 <script>
-  function showLogoutConfirmation() {
+  function showLogoutConfirmation2() {
     Swal.fire({
       title: 'yakinn mau Logout??',
       text: 'Kalau iya kamu bakal logout deh:(',

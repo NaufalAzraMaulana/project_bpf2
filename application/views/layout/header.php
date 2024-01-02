@@ -29,7 +29,7 @@
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/') ?>css/main.css" rel="stylesheet">
   <!-- Add this in the head section of your HTML -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
   <style>
@@ -76,66 +76,90 @@
 
     /* Add these styles to your existing CSS file or create a new one */
 
-/* Profile Card Styles */
-.profile-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-}
-
-/* Profile Image Styles */
-.profile-image {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 15px;
-}
-
-/* Profile Name Styles */
-.profile-name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-/* Profile Email and Skill Styles */
-.profile-email,
-.profile-skill {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 8px;
-}
-
-#footer {
-    /* position: fixed; */
-    bottom: 0;
-    width: 100%;
-    
-    padding: 20px 0; /* Adjust the padding as needed */
-    text-align: center;
-}
-
-.portfolio-description {
-        margin-bottom: 20px; /* Sesuaikan margin-bottom sesuai kebutuhan */
+    /* Profile Card Styles */
+    .profile-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
     }
 
- .content p {
-        text-align: justify;
-        text-indent: 20px; /* Jarak indentasi pada awal paragraf */
-        line-height: 1.6; /* Jarak antar baris */
-        margin-bottom: 20px; /* Jarak antar paragraf */
+    /* Profile Image Styles */
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
     }
- .portfolio-wrap img {
-    width: 100%; /* Gambar akan memenuhi lebar kontainernya */
-    height: 10cm; /* Menjaga aspek rasio gambar */
-    width: 13cm; /* Menjaga aspek rasio gambar */
-}
 
+    /* Profile Name Styles */
+    .profile-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
 
+    /* Profile Email and Skill Styles */
+    .profile-email,
+    .profile-skill {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    #footer {
+      /* position: fixed; */
+      bottom: 0;
+      width: 100%;
+
+      padding: 20px 0;
+      /* Adjust the padding as needed */
+      text-align: center;
+    }
+
+    .portfolio-description {
+      margin-bottom: 20px;
+      /* Sesuaikan margin-bottom sesuai kebutuhan */
+    }
+
+    .content p {
+      text-align: justify;
+      text-indent: 20px;
+      /* Jarak indentasi pada awal paragraf */
+      line-height: 1.6;
+      /* Jarak antar baris */
+      margin-bottom: 20px;
+      /* Jarak antar paragraf */
+    }
+
+    .portfolio-wrap img {
+      width: 100%;
+      /* Gambar akan memenuhi lebar kontainernya */
+      height: 10cm;
+      /* Menjaga aspek rasio gambar */
+      width: 13cm;
+      /* Menjaga aspek rasio gambar */
+    }
+
+    .portfolio-item {
+      height: 500px;
+    }
+
+    .portfolio-wrap {
+      height: 420px;
+    }
+
+    .job-description {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      /* utk nambahin titik-titik */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   </style>
 </head>
 
@@ -148,7 +172,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="<?= base_url('pelamar/home')?>">Beranda</a></li>
+          <li><a href="<?= base_url('pelamar/home') ?>">Beranda</a></li>
           <li><a href="<?= site_url('Pelamar/artikel') ?>">Artikel</a></li>
           <li><a href="<?= site_url('Pelamar/kursus') ?>">Kursus</a></li>
           <li><a href="<?= site_url('Pelamar/loker') ?>">Lowongan Kerja</a></li>
@@ -158,7 +182,7 @@
                 Setting
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="<?= base_url('pelamar/profile')?>" style="color:#000;padding: 10px 20px; font-size: 14px;">User Profile</a>
+                <a class="dropdown-item" href="<?= base_url('pelamar/profile') ?>" style="color:#000;padding: 10px 20px; font-size: 14px;">User Profile</a>
                 <a class="dropdown-item" href="#" onclick="showLogoutConfirmation()" style="color:#000;padding: 10px 20px; font-size: 14px;">Logout</a>
 
               </div>
@@ -174,21 +198,21 @@
   </header><!-- End Header -->
   <!-- End Header -->
   <!-- Add this in the script section of your HTML -->
-<script>
-  function showLogoutConfirmation() {
-    Swal.fire({
-      title: 'yakinn mau Logout??',
-      text: 'Kalau iya kamu bakal logout deh:(',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, logout!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Redirect to logout URL if the user clicks "Yes"
-        window.location.href = '<?= base_url('auth/logout') ?>';
-      }
-    });
-  }
-</script>
+  <script>
+    function showLogoutConfirmation() {
+      Swal.fire({
+        title: 'yakinn mau Logout??',
+        text: 'Kalau iya kamu bakal logout deh:(',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, logout!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Redirect to logout URL if the user clicks "Yes"
+          window.location.href = '<?= base_url('auth/logout') ?>';
+        }
+      });
+    }
+  </script>

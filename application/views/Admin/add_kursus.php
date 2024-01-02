@@ -12,7 +12,7 @@
                     <!-- Form Open -->
                     <?php echo form_open('Admin/add_kursus'); ?>
 
-                    <!-- Nama Kursus -->
+                    <!-- Nama Kursus --> 
                     <div class="form-group">
                         <label for="nama_kursus">Nama Kursus</label>
                         <input type="text" name="nama_kursus" class="form-control" required>

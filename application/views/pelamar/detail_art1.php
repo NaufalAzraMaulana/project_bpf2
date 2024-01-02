@@ -68,7 +68,10 @@
                             <p>Alamat email Anda tidak akan dipublikasikan. Bidang yang harus diisi ditandai *</p>
                             <form action="<?= site_url('Pelamar/tambah_komentar') ?>" method="post">
                                 <input type="hidden" name="article_id" value="<?= $article['id'] ?>">
-                                <input type="hidden" name="pelamar_id" value="<?= $pelamar_id ?>">
+
+                                <!-- Ambil pelamar_id dari sesi -->
+                                <input type="hidden" name="pelamar_id" value="<?= $this->session->userdata('pelamar_id') ?>">
+
                                 <div class="row">
                                     <div class="col form-group">
                                         <textarea name="comment" class="form-control" placeholder="Komentar Anda*"></textarea>

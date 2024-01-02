@@ -15,83 +15,34 @@
         <div class="container">
           <ol>
             <li><a href="<?= site_url('Pelamar/home') ?>">Beranda</a></li>
-            <li>Detail Kursus</li>
+            <li>Detail Lowongan Kerja</li>
           </ol>
         </div>
       </nav>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= Kursus Details Section ======= -->
+    <!-- ======= Loker Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container" data-aos="fade-up">
 
-        <div class="position-relative h-100">
-          <div class="slides-1 portfolio-details-slider swiper">
-            <div class="swiper-wrapper align-items-center">
-
-              <div class="swiper-slide">
-                <img src="<?= base_url('assets/') ?>img/portfolio/app-1.jpg" alt="">
-              </div>
-
-              <div class="swiper-slide">
-                <img src="<?= base_url('assets/') ?>img/portfolio/product-1.jpg" alt="">
-              </div>
-
-              <div class="swiper-slide">
-                <img src="<?= base_url('assets/') ?>img/portfolio/branding-1.jpg" alt="">
-              </div>
-
-              <div class="swiper-slide">
-                <img src="<?= base_url('assets/') ?>img/portfolio/books-1.jpg" alt="">
-              </div>
-
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-
+        <div class="row justify-content-center mt-4">
+          <img src="<?= base_url('assets/img/' . $job['foto']); ?>" alt="" style="height: 500px;">
         </div>
 
         <div class="row justify-content-between gy-4 mt-4">
 
           <div class="col-lg-8">
             <div class="portfolio-description">
-              <h2>Junior FullStack Developer</h2>
+            <h2><?= $job['posisi']; ?></h2>
               <h5>Deskripsi Pekerjaan :</h5>
-              <p>
-              - Mengembangkan arsitektur website di bagian depan (front end).<br>
-              - Mengembangkan aplikasi website di bagian belakang (back-end).<br>
-              - Membuat server dan basis data untuk fungsionalitas.<br>
-              - Memastikan stabilitas dan kinerja sistem.<br>
-              - Merancang dan mengembangkan API.<br>
-              - Memastikan responsif aplikasi.<br>
-              - Kemampuan untuk bekerja secara mandiri dan dengan tim.<br>
-              - Pengembangan agile dengan sprint berlangsung 2-3 minggu.<br>
-              - Berkolaborasi dengan pengembang dan insinyur lainnya untuk merancang, membangun, dan menjaga aplikasi.<br>
-              - Sarjana (S1) dalam bidang Ilmu Komputer, Teknologi Informasi, atau bidang terkait (lulusan baru).<br>
-              - Pengalaman dengan ASP.NET Web API, .NET Core, Angular/NodeJS SPA dengan TypeScript, atau framework JavaScript lainnya.<br>
-              - Kemampuan belajar yang baik (pemahaman dasar dan konseptual).<br>
-              - Mahir dalam pemrograman berorientasi objek.<br>
-              - Mahir dalam menulis kode yang bersih, mudah dibaca, dan mudah dipelihara.<br>
-              - Mahir dalam merancang dan membangun basis data relasional yang skalabel menggunakan SQL Server atau model relasional lainnya (PostgreSQL/MySQL).<br>
-              - Kemahiran dalam Struktur Data, Algoritma, dan Problem Solving (Array, Vector, Hashmap, Quick-Sort, DFS, BFS).<br>
-              - Familiar dengan Repositori Kode (Git, SVN, CVS).<br>
-              - Familiar dengan API Restful dan Protokol Pertukaran Data (JSON).<br>
-              - Keahlian dalam bahasa-bahasa utama di frontend seperti HTML, CSS, dan JavaScript.<br>
-              - Harus memiliki kemampuan troubleshoot yang kuat dan keterampilan tuning performa yang solid.<br>
-              - Memiliki keterampilan komunikasi lisan yang kuat.<br>
-              </p>
-              <h5>Kriteria Pegawai :</h5>
-              <p>
-                - Minimal pendidikan D3 di jurusan yang linear.<br>
-                - Excellent mathematical and problem-solving skills. 
-              </p>
+              <p><?= $job['deskripsi_pekerjaan']; ?></p>
+              <h5>Kriteria Pelamar :</h5>
+              <p><?= $job['kriteria']; ?></p>
 
               <div class="testimonial-item">
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  PT Andal Software Sejahtera sebuah perusahaan Teknologi Informasi (Information Technology), saat ini kami mengkhususkan diri sebagai sebuah perusahaan penyedia solusi layanan TI di semua sektor industri.
+                  <?= $job['deskripsi_perusahaan']; ?>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -102,14 +53,15 @@
             <div class="portfolio-info">
               <h3>Informasi Pekerjaan</h3>
               <ul>
-                <li><strong>Perusahaan</strong> <span>PT Andal Software Sejahtera</span></li>
-                <li><strong>Posisi</strong> <span>Junior Fullstack Developer</span></li>
-                <li><strong>Lokasi</strong> <span>Jakarta, Indonesia</span></li>
-                <li><strong>Kategori</strong> <span>Teknologi</span></li>
-                <li><strong>Jam Kerja/Hari</strong> <span>10 Jam</span></li>
-                <li><strong>Gaji</strong> <span>Rp.10.000.000</span></li>
-                <li><strong>Tipe Pekerjaan</strong> <span>Full Time</span></li>
-                <li><a href="#" class="btn-visit align-self-start">Lamar Pekerjaan</a></li>
+                <li><strong>Perusahaan</strong> <span><?= $job['perusahaan']; ?></span></li>
+                <li><strong>Posisi</strong> <span><?= $job['posisi']; ?></span></li>
+                <li><strong>Lokasi</strong> <span><?= $job['lokasi_kerja']; ?></span></li>
+                <li><strong>Kategori</strong> <span><?= $job['kategori']; ?></span></li>
+                <li><strong>Jam Kerja/Hari</strong> <span><?= $job['jam_kerja']; ?> Jam</span></li>
+                <li><strong>Gaji</strong> <span>Rp.<?= $job['gaji']; ?></span></li>
+                <li><strong>Tipe Pekerjaan</strong> <span><?= $job['tipe_kerja']; ?></span></li>
+                <li><a href="<?= $job['link']; ?>" class="btn-visit align-self-start" target="_blank">Lihat Pekerjaan</a></li>
+
               </ul>
             </div>
           </div>

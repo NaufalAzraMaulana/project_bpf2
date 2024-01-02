@@ -8,6 +8,12 @@ class Pelamar_model extends CI_Model
         parent::__construct();
         $this->load->database();
     }
+    public function get_all_pelamar()
+    {
+        // Fetch all user data from the 'pelamar' table
+        $query = $this->db->get('pelamar');
+        return $query->result();
+    }
 
     public function get_by_email($email)
     {
@@ -30,5 +36,11 @@ class Pelamar_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    public function delete_profile($pelamarid)
+{
+    // Delete the user profile from the 'pelamar' table
+    $this->db->where('id', $pelamarid);
+    $this->db->delete('pelamar');
+}
 }
 

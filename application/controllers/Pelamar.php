@@ -12,6 +12,7 @@ class Pelamar extends CI_Controller
         $this->load->model('Article_model');
         $this->load->model('Comment_model');
         $this->load->model('Kursus_model');
+        $this->load->model('Job_model');
         
     }
 
@@ -176,7 +177,9 @@ class Pelamar extends CI_Controller
         $article_id = $this->input->post('article_id');
         $pelamar_id = $this->input->post('pelamar_id');
         $comment = $this->input->post('comment');
-
+        if (empty($pelamar_id) || !is_numeric($pelamar_id)) {
+            redirect('Pelamar/detail_artikel/' . $article_id);
+        }
         $data = array(
             'article_id' => $article_id,
             'pelamar_id' => $pelamar_id,
@@ -227,14 +230,22 @@ public function rekomendasi_kursus()
 
     public function loker()
     {
+        $data['jobs'] = $this->Job_model->get_all_jobs();
         $this->load->view("layout/header");
-        $this->load->view("pelamar/loker");
+        $this->load->view("pelamar/loker", $data);
         $this->load->view("layout/footer");
     }
-    public function detail_loker()
+    public function detail_loker($job_id)
     {
+        $data['job'] = $this->Job_model->get_job_by_id($job_id);
         $this->load->view("layout/header");
-        $this->load->view("pelamar/detail_loker");
+        $this->load->view("pelamar/detail_loker",$data);
         $this->load->view("layout/footer");
+    }
+    public function get_jobs()
+    {
+        // Fetch job data from the database
+        $query = $this->db->get('jobs');
+        return $query->result_array();
     }
 }
