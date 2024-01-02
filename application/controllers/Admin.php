@@ -155,7 +155,7 @@ class Admin extends CI_Controller
         $this->load->view("admin/adm_artikel", $data);
         $this->load->view("layout_admin/footer");
     }
-    public function detail_artikel()
+    public function detail_artikel($id)
     {
         // Fetch the selected article by ID
         $data['article'] = $this->Article_model->get_article_by_id($id);
@@ -270,6 +270,14 @@ class Admin extends CI_Controller
         // Redirect ke halaman daftar artikel atau halaman lainnya
         redirect('Admin/home');
     }
+    public function detail_kursus($id)
+{
+    $data['kursus'] = $this->Kursus_model->get_kursus_by_id($id);
+    $data['Kursus_detail'] = $this->Kursus_model->getKursusDetail($id);
+    $this->load->view("layout_admin/header");
+    $this->load->view("admin/detail_kursus", $data);
+    $this->load->view("layout_admin/footer");
+}
 
     // controllers/Admin.php
 
