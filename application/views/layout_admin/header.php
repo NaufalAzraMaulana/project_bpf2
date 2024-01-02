@@ -138,7 +138,7 @@
           <li><a href="<?= base_url('admin/home')?>">Beranda</a></li>
           <li><a href="<?= site_url('admin/artikel') ?>">Artikel</a></li>
           <li><a href="<?= site_url('admin/kursus') ?>">Kursus</a></li>
-          <li><a href="#">Lowongan Kerja</a></li>
+          <li><a href="<?= site_url('admin/loker') ?>">Lowongan Kerja</a></li>
           <li>
             <div class="dropdown">
               <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; border: none;">

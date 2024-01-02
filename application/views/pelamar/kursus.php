@@ -34,9 +34,7 @@
                         
                         <li data-filter=".filter-app"><a href="<?= base_url('Pelamar/rekomendasi_kursus/') ?>">Rekomendasi Kursus </a></li>
                         
-                        <li data-filter=".filter-product">Kursus Terbaru</li>
-                        <li data-filter=".filter-branding">Kursus On-Progress</li>
-                        <li data-filter=".filter-books">Selesai</li>
+                        
                     </ul><!-- End Kursus Filters -->
                 </div>
                 

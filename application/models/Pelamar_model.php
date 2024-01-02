@@ -42,5 +42,14 @@ class Pelamar_model extends CI_Model
     $this->db->where('id', $pelamarid);
     $this->db->delete('pelamar');
 }
+
+public function getLokerDataById($email) {
+    $this->db->select('pelamar.id,jobs.id, pelamar.nama, pelamar.email, pelamar.bakat, jobs.posisi,jobs.deskripsi_pekerjaan, jobs.bakat_required, jobs.foto');
+    $this->db->from('jobs');
+    $this->db->join('pelamar', 'pelamar.bakat = jobs.bakat_required');
+    $this->db->where('pelamar.email', $email);
+    $query = $this->db->get();
+    return $query->result();
+}
 }
 

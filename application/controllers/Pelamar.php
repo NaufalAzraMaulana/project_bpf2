@@ -75,7 +75,7 @@ class Pelamar extends CI_Controller
         // Retrieve user data from the database (assuming user is logged in)
         $email = $this->session->userdata('email');
         $data['user'] = $this->Pelamar_model->get_by_email($email);
-        $this->load->view('layout/header');
+        $this->load->view('layout_profile/header');
         $this->load->view('pelamar/profile', $data);
         $this->load->view('layout/footer');
     }
@@ -248,4 +248,18 @@ public function rekomendasi_kursus()
         $query = $this->db->get('jobs');
         return $query->result_array();
     }
+    public function rekomendasi_jobs()
+{
+    // Ambil id pelamar dari sesi atau model sesuai kebutuhan
+    $email = $this->session->userdata('email');
+    
+
+    // Panggil fungsi model untuk mendapatkan data kursus berdasarkan id pelamar
+    $data['RekomendasiJob'] = $this->Pelamar_model->getLokerDataById($email);
+
+    // Load view rekomendasi kursus
+    $this->load->view("layout/header");
+    $this->load->view("pelamar/rekomendasi_job", $data);
+    $this->load->view("layout/footer");
+}
 }

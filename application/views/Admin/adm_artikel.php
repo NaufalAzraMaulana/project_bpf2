@@ -61,7 +61,7 @@
                             <div class="ml-auto">
                                 <!-- <a href="<?= base_url('Admin/add_article/' . $article['id']) ?>" class="btn btn-sm btn-primary">Tambah</a> -->
                                 <a href="<?= base_url('Admin/edit_artikel/' . $article['id']) ?>" class="btn btn-sm btn-success">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger" onclick="showLogoutConfirmation()">Delete</a>
+                                <a href="#" class="btn btn-sm btn-danger" onclick="showDeleteConfirmation(<?= $article['id'] ?>)">Delete</a>
                             </div>
                         </article>
                     </div><!-- End post list item -->
@@ -82,19 +82,19 @@
 </main><!-- End #main -->
 
 <script>
-    function showLogoutConfirmation() {
+    function showDeleteConfirmation(articleId) {
         Swal.fire({
-            title: 'yakinn mau Hapus??',
-            text: 'Kalau iya ntar terhapus loh:(',
+            title: 'Yakin mau hapus?',
+            text: 'Kalau iya, nanti data akan terhapus!',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, Terhapusss!'
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, Hapus!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Redirect to logout URL if the user clicks "Yes"
-                window.location.href = '<?= base_url('admin/delete_article') ?>';
+                // Redirect to delete article URL if the user clicks "Yes"
+                window.location.href = '<?= base_url("Admin/delete_article/") ?>' + articleId;
             }
         });
     }

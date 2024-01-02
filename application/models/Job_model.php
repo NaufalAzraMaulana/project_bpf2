@@ -25,4 +25,23 @@ class Job_model extends CI_Model
         $query = $this->db->get_where('jobs', array('id' => $job_id));
         return $query->row_array();
     }
+      // Insert a new job posting into the database
+      public function insert_job($data)
+      {
+          $this->db->insert('jobs', $data);
+      }
+  
+      // Update a job posting in the database
+      public function update_job($job_id, $data)
+      {
+          $this->db->where('id', $job_id);
+          $this->db->update('jobs', $data);
+      }
+  
+      // Delete a job posting from the database
+      public function delete_job($job_id)
+      {
+          $this->db->where('id', $job_id);
+          $this->db->delete('jobs');
+      }
 }

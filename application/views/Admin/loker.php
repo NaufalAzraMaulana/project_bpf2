@@ -15,7 +15,7 @@
         <nav>
             <div class="container">
                 <ol>
-                    <li><a href="<?= site_url('Pelamar/home') ?>">Beranda</a></li>
+                    <li><a href="<?= site_url('Admin/home') ?>">Beranda</a></li>
                     <li>Lowongan Kerja</li>
                 </ol>
             </div>
@@ -25,30 +25,25 @@
     <!-- ======= Lowongan Kerja Section ======= -->
     <section id="portfolio" class="portfolio sections-bg">
         <div class="container" data-aos="fade-up">
-            <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100">
-                <div>
-                    <ul class="portfolio-flters">
-                    <li data-filter="*" class="filter-active"><a href="<?= base_url('pelamar/loker');?>"> Semua</a></li>
-                        
-                        <li data-filter=".filter-app"><a href="<?= base_url('Pelamar/rekomendasi_jobs/') ?>">Rekomendasi Job</a></li>
-                        
-                    </ul><!-- End Kursus Filters -->
-                </div>
-
+                <a href="<?= base_url('Admin/add_loker') ?>" class="btn btn-primary">Tambah Lowongan Kerja</a>
+                <br><br>
                 <div class="row gy-4 portfolio-container">
                     <?php foreach ($jobs as $job) : ?>
                         <div class="col-xl-4 col-md-6 portfolio-item filter-app">
                             <div class="portfolio-wrap">
                                 <a href="<?= base_url('assets/img/' . $job['foto']); ?>" data-gallery="portfolio-gallery-app" class="glightbox"><img src="<?= base_url('assets/img/' . $job['foto']); ?>" class="img-fluid" alt=""></a>
                                 <div class="portfolio-info">
-                                    <h4><a href="<?= base_url('pelamar/detail_loker/' . $job['id']); ?>" title="More Details"><?= $job['posisi']; ?></a></h4>
+                                    <h4><a href="<?= base_url('admin/detail_loker/' . $job['id']); ?>" title="More Details"><?= $job['posisi']; ?></a></h4>
                                     <p class="job-description"><?= $job['deskripsi_pekerjaan']; ?></p>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <a href="<?= base_url('Admin/edit_loker/' . $job['id']); ?>" class="btn btn-success">Edit</a>
+                                        <button class="btn btn-sm btn-danger" onclick="showDeleteConfirmation(<?= $job['id']; ?>)">Delete</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </div><!-- End Kursus Container -->
-            </div>
         </div>
     </section><!-- End Kursus Section -->
 </main><!-- End #main -->

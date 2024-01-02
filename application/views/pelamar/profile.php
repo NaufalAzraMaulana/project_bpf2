@@ -3,13 +3,13 @@
 <!-- User Profile Section -->
 <section id="user-profile" class="user-profile">
     <div class="container" data-aos="fade-up">
-        <div class="section-header">
+        <div class="section-header text-center">
             <h2>User Profile</h2>
         </div>
-        <div class="row gy-4">
+        <div class="row justify-content-center gy-4">
             <div class="col-lg-6">
-                <div class="profile-card">
-                    <img src="<?= base_url('assets/gambar/' . $user['gambar']); ?>" alt="User Profile Image" class="profile-image">
+                <div class="profile-card text-center">
+                    <!-- <img src="<?= base_url('assets/gambar/' . $user['gambar']); ?>" alt="User Profile Image" class="profile-image"> -->
                     <h3 class="profile-name"><?= $user['nama']; ?></h3>
                     <p class="profile-email">Email: <?= $user['email']; ?></p>
                     <p class="profile-skill">Bakat: <?= $user['bakat']; ?></p>
