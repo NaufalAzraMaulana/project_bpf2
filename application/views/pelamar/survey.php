@@ -66,7 +66,7 @@
             </div>
             <h3>Teknologi Informasi</h3>
             <!-- Form for Teknologi Informasi -->
-            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+            <form action="<?= base_url('Pelamar/save_bakat') ?>" method="post">
               <input type="hidden" name="talent" value="Teknologi Informasi">
               <button type="submit" class="btn btn-primary">Select</button>
             </form>
@@ -79,7 +79,7 @@
               <i class="bi bi-flower1"></i>
             </div>
             <h3>Pertanian</h3>
-            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+            <form action="<?= base_url('Pelamar/save_bakat') ?>" method="post">
               <input type="hidden" name="talent" value="Pertanian">
               <button type="submit" class="btn btn-primary">Select</button>
             </form>
@@ -92,7 +92,7 @@
               <i class="bi bi-cash-coin"></i>
             </div>
             <h3>Keuangan</h3>
-            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+            <form action="<?= base_url('Pelamar/save_bakat') ?>" method="post">
               <input type="hidden" name="talent" value="Keuangan">
               <button type="submit" class="btn btn-primary">Select</button>
             </form>
@@ -105,7 +105,7 @@
               <i class="bi bi-building-up"></i>
             </div>
             <h3>Infrastuktur atau Sipil</h3>
-            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+            <form action="<?= base_url('Pelamar/save_bakat') ?>" method="post">
               <input type="hidden" name="talent" value="Infrastruktur dan Sipil">
               <button type="submit" class="btn btn-primary">Select</button>
             </form>
@@ -118,7 +118,7 @@
               <i class="bi bi-shop"></i>
             </div>
             <h3>Pemasaran</h3>
-            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+            <form action="<?= base_url('Pelamar/save_bakat') ?>" method="post">
               <input type="hidden" name="talent" value="Pemasaran">
               <button type="submit" class="btn btn-primary">Select</button>
             </form>
@@ -131,7 +131,7 @@
               <i class="bi bi-gear-fill"></i>
             </div>
             <h3>Otomotif</h3>
-            <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
+            <form action="<?= base_url('Pelamar/save_bakat') ?>" method="post">
               <input type="hidden" name="talent" value="Otomotif">
               <button type="submit" class="btn btn-primary">Select</button>
             </form>

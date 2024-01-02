@@ -59,9 +59,7 @@
 
       <div class="blog-pagination">
         <ul class="justify-content-center">
-          <li><a href="#">
-              <
-          </li>
+          <li><a href="#"><</a></li>
           <li class="active"><a href="#">1</a></li>
           <li><a href="#">></a></li>
         </ul>

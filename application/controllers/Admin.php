@@ -9,6 +9,9 @@ class Admin extends CI_Controller
         $this->load->model('Dashboard_model');
         $this->load->model('Pelamar_model');
         $this->load->model('Article_model');
+        $this->load->model('Kursus_model');
+        $this->load->model('Comment_model');
+        $this->load->model('Job_model');
         $this->load->library('upload');
     }
 
@@ -20,7 +23,7 @@ class Admin extends CI_Controller
         $data['jobCount'] = $this->Dashboard_model->getJobCount();
 
         $this->load->view("layout/header_admin");
-        $this->load->view("landingpage", $data);
+        $this->load->view("admin/home", $data);
         $this->load->view("layout/footer_admin");
     }
     public function survey()
@@ -46,9 +49,9 @@ class Admin extends CI_Controller
         $data['applicantCount'] = $this->Dashboard_model->getApplicantCount();
         $data['jobCount'] = $this->Dashboard_model->getJobCount();
 
-        $this->load->view("layout_admin/header");
+        $this->load->view("layout/header_admin");
         $this->load->view("admin/home", $data);
-        $this->load->view("layout_admin/footer");
+        $this->load->view("layout/footer_admin");
     }
 
     public function save_talent()
@@ -131,15 +134,15 @@ class Admin extends CI_Controller
 
     public function artikel()
     {
-        $this->load->view("layout_admin/header");
+        $this->load->view("layout/header_admin");
         $this->load->view("admin/add_artikel");
-        $this->load->view("layout_admin/footer");
+        $this->load->view("layout/footer_admin");
     }
     public function detail_artikel()
     {
-        $this->load->view("layout_admin/header");
+        $this->load->view("layout/header_admin");
         $this->load->view("admin/detail_art1");
-        $this->load->view("layout_admin/footer");
+        $this->load->view("layout/footer_admin");
     }
 
     // Admin controller (Admin.php)
@@ -151,19 +154,19 @@ class Admin extends CI_Controller
             // Redirect to the login page if not logged in as admin
             redirect('Auth');
         }
-    
+
         // Form validation
         $this->form_validation->set_rules('judul', 'Judul', 'trim|required');
         $this->form_validation->set_rules('jenis', 'Jenis', 'trim|required');
         $this->form_validation->set_rules('isi', 'Isi', 'trim|required');
         $this->form_validation->set_rules('hari', 'Hari', 'trim|required');
         $this->form_validation->set_rules('tanggal_publikasi', 'Tanggal Publikasi', 'trim|required');
-    
+
         if ($this->form_validation->run() == false) {
             // If validation fails, reload the form
-            $this->load->view("layout_admin/header");
+            $this->load->view("layout/header_admin");
             $this->load->view('admin/add_artikel');
-            $this->load->view("layout_admin/footer");
+            $this->load->view("layout/footer_admin");
         } else {
             // If validation succeeds, add article to the database
             $data = [
@@ -173,7 +176,7 @@ class Admin extends CI_Controller
                 'hari' => $this->input->post('hari'),
                 'tanggal_publikasi' => $this->input->post('tanggal_publikasi'),
             ];
-    
+
             // File upload configuration
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = 2048;
@@ -181,9 +184,9 @@ class Admin extends CI_Controller
             $config['overwrite'] = true;
             $config['max_width'] = 1080;
             $config['max_height'] = 1080;
-    
+
             $this->load->library('upload', $config);
-    
+
             if ($this->upload->do_upload('gambar')) {
                 // If upload successful, get the uploaded file name
                 $new_image = $this->upload->data('file_name');
@@ -194,13 +197,238 @@ class Admin extends CI_Controller
                 $this->session->set_flashdata('error_message', $error);
                 // redirect('Admin/add_article');
             }
-    
+
             // Insert data into the database
             $this->Article_model->insert_article($data);
-    
+
             // Redirect to the admin page or another appropriate page
             redirect('Admin/home');
         }
     }
-    
+    public function kursus()
+    {
+        $this->load->view("layout/header_admin");
+        $this->load->view("admin/add_kursus");
+        $this->load->view("layout/footer_admin");
+    }
+    public function add_kursus()
+    {
+        // Check if admin is logged in
+        if (!$this->session->userdata('email') || $this->session->userdata('role') !== 'admin') {
+            // Redirect to the login page if not logged in as admin
+            redirect('Auth');
+        }
+
+        // Form validation
+        $this->form_validation->set_rules('nama_kursus', 'Nama Kursus', 'trim|required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi Kursus', 'trim|required');
+        $this->form_validation->set_rules('bakat_required', 'Bakat yang Dibutuhkan', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            // If validation fails, reload the form
+            $this->load->view("layout/header_admin");
+            $this->load->view('admin/add_kursus');
+            $this->load->view("layout/footer_admin");
+        } else {
+            // If validation succeeds, add kursus to the database
+            $data = [
+                'nama_kursus' => $this->input->post('nama_kursus'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'bakat_required' => $this->input->post('bakat_required'),
+                'pendidikan_required' => $this->input->post('pendidikan_required'), // Uncomment this line if you want to include this field
+            ];
+
+            // File upload configuration
+            // Modify this part accordingly
+
+            // Insert data into the database
+            $this->Kursus_model->insert_kursus($data);
+
+            // Redirect to the admin page or another appropriate page
+            redirect('Admin/home');
+        }
+    }
+    public function loker()
+    {
+        $data['jobs'] = $this->Job_model->get_all_jobs();
+        $this->load->view("layout/header_admin");
+        $this->load->view("admin/loker", $data);
+        $this->load->view("layout/footer_admin");
+    }
+    public function add_loker()
+    {
+        // if (!$this->session->userdata('email') || $this->session->userdata('role') !== 'admin') {
+        //     redirect('Auth');
+        // }
+
+        // Form validation
+        $this->form_validation->set_rules('posisi', 'Posisi', 'trim|required');
+        $this->form_validation->set_rules('perusahaan', 'Perusahaan', 'trim|required');
+        $this->form_validation->set_rules('kriteria', 'Kriteria', 'trim|required');
+        $this->form_validation->set_rules('deskripsi_pekerjaan', 'Deskripsi Pekerjaan', 'trim|required');
+        $this->form_validation->set_rules('bakat_required', 'Bakat yang Dibutuhkan', 'trim|required');
+        $this->form_validation->set_rules('pendidikan_required', 'Pendidikan yang Dibutuhkan', 'trim|required');
+        $this->form_validation->set_rules('deskripsi_perusahaan', 'Deskripsi Perusahaan', 'trim|required'); // Add this line
+        $this->form_validation->set_rules('lokasi_kerja', 'Lokasi Kerja', 'trim|required'); // Add this line
+        $this->form_validation->set_rules('kategori', 'Kategori', 'trim|required'); // Add this line
+        $this->form_validation->set_rules('jam_kerja', 'Jam Kerja', 'trim|required'); // Add this line
+        $this->form_validation->set_rules('gaji', 'Gaji', 'trim|required'); // Add this line
+        $this->form_validation->set_rules('link', 'Link', 'trim|required'); // Add this line
+
+        if ($this->form_validation->run() == false) {
+            // If validation fails, reload the form
+            $this->load->view("layout/header_admin");
+            $this->load->view('admin/add_loker');
+            $this->load->view("layout/footer_admin");
+        } else {
+            // If validation succeeds, add job posting to the database
+            $data = [
+                'posisi' => $this->input->post('posisi'),
+                'perusahaan' => $this->input->post('perusahaan'),
+                'kriteria' => $this->input->post('kriteria'),
+                'deskripsi_pekerjaan' => $this->input->post('deskripsi_pekerjaan'),
+                'bakat_required' => $this->input->post('bakat_required'),
+                'pendidikan_required' => $this->input->post('pendidikan_required'),
+                'deskripsi_perusahaan' => $this->input->post('deskripsi_perusahaan'), // Add this line
+                'lokasi_kerja' => $this->input->post('lokasi_kerja'), // Add this line
+                'kategori' => $this->input->post('kategori'), // Add this line
+                'jam_kerja' => $this->input->post('jam_kerja'), // Add this line
+                'gaji' => $this->input->post('gaji'), // Add this line
+                'link' => $this->input->post('link'), // Add this line
+            ];
+
+            // File upload configuration
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size'] = 2048;
+            $config['upload_path'] = FCPATH . 'assets/img/';
+            $config['file_name'] = uniqid(); // Set a unique name for the file
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+                // If upload successful, get the uploaded file name
+                $data['foto'] = $this->upload->data('file_name');
+            } else {
+                // If upload fails, handle errors
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('error_message', $error);
+            }
+
+            // Insert data into the database
+            $this->Job_model->insert_job($data);
+
+            // Redirect to the admin page or another appropriate page
+            redirect('Admin/loker');
+        }
+    }
+
+    // Edit a job posting
+    public function edit_loker($job_id)
+    {
+        // if (!$this->session->userdata('email') || $this->session->userdata('role') !== 'admin') {
+        //     redirect('Auth');
+        // }
+
+        // Retrieve job details from the database
+        $data['job'] = $this->Job_model->get_job_by_id($job_id);
+
+        // Load the edit job posting view
+        $this->load->view("layout/header_admin");
+        $this->load->view('admin/edit_loker', $data);
+        $this->load->view("layout/footer_admin");
+    }
+
+    // Update a job posting
+    public function update_loker($job_id)
+    {
+        // if (!$this->session->userdata('email') || $this->session->userdata('role') !== 'admin') {
+        //     redirect('Auth');
+        // }
+
+        // Form validation
+    $this->form_validation->set_rules('posisi', 'Posisi', 'trim|required');
+    $this->form_validation->set_rules('perusahaan', 'Perusahaan', 'trim|required');
+    $this->form_validation->set_rules('kriteria', 'Kriteria', 'trim|required');
+    // Add validation rules for new fields
+    $this->form_validation->set_rules('deskripsi_pekerjaan', 'Deskripsi Pekerjaan', 'trim|required');
+    $this->form_validation->set_rules('bakat_required', 'Bakat yang Dibutuhkan', 'trim|required');
+    $this->form_validation->set_rules('pendidikan_required', 'Pendidikan yang Dibutuhkan', 'trim|required');
+    $this->form_validation->set_rules('deskripsi_perusahaan', 'Deskripsi Perusahaan', 'trim|required');
+    $this->form_validation->set_rules('lokasi_kerja', 'Lokasi Kerja', 'trim|required');
+    $this->form_validation->set_rules('kategori', 'Kategori', 'trim|required');
+    $this->form_validation->set_rules('jam_kerja', 'Jam Kerja', 'trim|required');
+    $this->form_validation->set_rules('gaji', 'Gaji', 'trim|required');
+    $this->form_validation->set_rules('link', 'Link', 'trim|required');
+
+    if ($this->form_validation->run() == false) {
+        // If validation fails, reload the form
+        $this->load->view("layout/header_admin");
+        $this->load->view('admin/edit_loker');
+        $this->load->view("layout/footer_admin");
+    } else {
+        // If validation succeeds, update job posting in the database
+        $data = [
+            'posisi' => $this->input->post('posisi'),
+            'perusahaan' => $this->input->post('perusahaan'),
+            'kriteria' => $this->input->post('kriteria'),
+            'deskripsi_pekerjaan' => $this->input->post('deskripsi_pekerjaan'),
+            'bakat_required' => $this->input->post('bakat_required'),
+            'pendidikan_required' => $this->input->post('pendidikan_required'),
+            // Add other fields as needed
+            'deskripsi_perusahaan' => $this->input->post('deskripsi_perusahaan'),
+            'lokasi_kerja' => $this->input->post('lokasi_kerja'),
+            'kategori' => $this->input->post('kategori'),
+            'jam_kerja' => $this->input->post('jam_kerja'),
+            'gaji' => $this->input->post('gaji'),
+            'link' => $this->input->post('link'),
+        ];
+
+        // Update data in the database
+        $this->Job_model->update_job($job_id, $data);
+
+        // Redirect to the admin page or another appropriate page
+        redirect('Admin/loker');
+    }
+}
+
+    // Delete a job posting
+    public function delete_loker($job_id)
+    {
+        // if (!$this->session->userdata('email') || $this->session->userdata('role') !== 'admin') {
+        //     redirect('Auth');
+        // }
+
+        // Delete job posting from the database
+        $this->Job_model->delete_job($job_id);
+
+        // Redirect to the admin page or another appropriate page
+        redirect('Admin/loker');
+    }
+
+    // Callback function to handle file upload
+    public function upload_file($file)
+    {
+        // File upload configuration
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = 2048;
+        $config['upload_path'] = FCPATH . 'assets/img/';
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload($file)) {
+            // If upload successful, return true
+            return true;
+        } else {
+            // If upload fails, set error message and return false
+            $this->form_validation->set_message('upload_file', $this->upload->display_errors());
+            return false;
+        }
+    }
+    public function detail_loker($job_id)
+    {
+        $data['job'] = $this->Job_model->get_job_by_id($job_id);
+        $this->load->view("layout/header");
+        $this->load->view("admin/detail_loker", $data);
+        $this->load->view("layout/footer");
+    }
 }

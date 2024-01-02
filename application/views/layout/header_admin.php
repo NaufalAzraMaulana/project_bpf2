@@ -28,6 +28,16 @@
   <!-- Template Main CSS File -->
   <link href="<?= base_url('assets/') ?>css/main.css" rel="stylesheet">
   <!-- Add this in the head section of your HTML -->
+  <style>
+
+    .job-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* utk nambahin titik-titik */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  </style>
 </head>
 
 <body>
@@ -39,13 +49,13 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="<?= base_url('pelamar/home')?>">Beranda</a></li>
-          <li><a href="<?= base_url('pelamar/artikel')?>">Artikel</a></li>
-          <li><a href="<?= base_url('pelamar/kursus')?>">Kursus</a></li>
-          <li><a href="#">Lowongan Kerja</a></li>
+          <li><a href="<?= base_url('admin/home')?>">Beranda</a></li>
+          <li><a href="<?= base_url('admin/artikel')?>">Artikel</a></li>
+          <li><a href="<?= base_url('admin/kursus')?>">Kursus</a></li>
+          <li><a href="<?= base_url('admin/loker')?>">Lowongan Kerja</a></li>
           <li class="dropdown"><a href="#"><span>Setting</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="<?= base_url('pelamar/profile')?>">User Profile</a></li>
+              <li><a href="<?= base_url('admin/profile')?>">User Profile</a></li>
               <li><a href="#" onclick="showLogoutConfirmation()">Logout</a></li>
             </ul>
           </li>
@@ -75,4 +85,22 @@
       }
     });
   }
+</script>
+<script>
+    function showDeleteConfirmation(jobId) {
+        Swal.fire({
+            title: 'Yakin mau hapus?',
+            text: 'Jika dihapus, data lowongan kerja tidak dapat dikembalikan.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to delete job URL if the user clicks "Yes"
+                window.location.href = '<?= base_url('Admin/delete_loker/') ?>' + jobId;
+            }
+        });
+    }
 </script>

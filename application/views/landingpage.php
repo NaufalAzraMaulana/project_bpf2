@@ -95,7 +95,7 @@
 
               <div class="position-relative mt-4">
                 <img src="<?= base_url('assets/') ?>img/about-2.jpg" class="img-fluid rounded-4" alt="">
-                <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+                <a href="https://youtu.be/12ass4FSCcg?feature=shared" class="glightbox play-btn"></a>
               </div>
             </div>
           </div>

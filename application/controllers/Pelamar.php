@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 class Pelamar extends CI_Controller
 {
     public function __construct()
@@ -11,6 +10,7 @@ class Pelamar extends CI_Controller
         $this->load->model('Article_model');
         $this->load->model('Comment_model');
         $this->load->model('Job_model');
+        $this->load->model('Kursus_model');
     }
 
     public function index()
@@ -43,38 +43,55 @@ class Pelamar extends CI_Controller
     }
     public function save_talent()
     {
+        // Check if the user is logged in
         if (!$this->session->userdata('email')) {
             redirect('Auth');
         }
+
+        // Get the selected talent from the form submission
         $selected_talent = $this->input->post('talent');
+
+        // Update the 'bakat' column in the 'pelamar' table
         $email = $this->session->userdata('email');
         $this->db->where('email', $email);
         $this->db->update('pelamar', ['bakat' => $selected_talent]);
+
+        // Redirect to the home page or any other page you want
         redirect('Pelamar/home');
     }
     public function profile()
     {
+        // Retrieve user data from the database (assuming user is logged in)
         $email = $this->session->userdata('email');
         $data['user'] = $this->Pelamar_model->get_by_email($email);
         $this->load->view('layout/header');
         $this->load->view('pelamar/profile', $data);
         $this->load->view('layout/footer');
     }
+
     public function edit_profile()
     {
+        // Assuming you have a form to edit 
+        // Retrieve user data from the database (assuming user is logged in)
         $email = $this->session->userdata('email');
         $data['user'] = $this->Pelamar_model->get_by_email($email);
         $this->load->view('layout/header');
         $this->load->view('pelamar/edit_profile', $data);
         $this->load->view('layout/footer');
     }
+
     public function update_profile()
     {
+        // Handle form submission for updating user profile
+        // This may include updating name, skill, and image
+        // Validate and process the form data
+
         $data = array(
             'nama' => $this->input->post('nama'),
             'bakat' => $this->input->post('bakat'),
         );
 
+        // If the user is uploading a new image
         $upload_image = $_FILES['gambar']['name'];
         if ($upload_image) {
             $config['allowed_types'] = 'gif|jpg|png';
@@ -89,9 +106,15 @@ class Pelamar extends CI_Controller
                 echo $this->upload->display_errors();
             }
         }
+
+        // Update the user profile in the database
         $email = $this->session->userdata('email');
         $this->Pelamar_model->update_profile($email, $data);
+        // Display SweetAlert confirmation
         $this->session->set_flashdata('success', 'Profil berhasil diperbarui!');
+        redirect('pelamar/profile');
+
+        // Redirect to the profile page
         redirect('pelamar/profile');
     }
     public function artikel()
@@ -106,6 +129,8 @@ class Pelamar extends CI_Controller
     public function detail_artikel($id)
     {
         $data['article'] = $this->Article_model->get_article_by_id($id);
+        $data['comments'] = $this->Comment_model->get_comments_by_article($id);
+        // Fetch categories for the sidebar
         $data['categories'] = $this->Article_model->get_categories();
         $data['recent_articles'] = $this->Article_model->get_recent_articles();
         $data['pelamar_id'] = $this->session->userdata('pelamar_id');
@@ -147,14 +172,35 @@ class Pelamar extends CI_Controller
     }
     public function kursus()
     {
+        $email = $this->session->userdata('email'); // Replace with the actual skill of the logged-in Pelamar
+
+        $data['Kursus_list'] = $this->Kursus_model->get_all_kursus();
+        $data['joinedData'] = $this->Pelamar_model->getJoinedDataById($email);
+
         $this->load->view("layout/header");
-        $this->load->view("pelamar/kursus");
+        $this->load->view("pelamar/kursus", $data);
         $this->load->view("layout/footer");
     }
-    public function detail_kursus()
+    public function detail_kursus($id)
     {
+        $data['kursus'] = $this->Kursus_model->get_kursus_by_id($id);
+        $data['Kursus_detail'] = $this->Kursus_model->getKursusDetail($id);
         $this->load->view("layout/header");
-        $this->load->view("pelamar/detail_kursus");
+        $this->load->view("pelamar/detail_kursus", $data);
+        $this->load->view("layout/footer");
+    }
+    public function rekomendasi_kursus()
+    {
+        // Ambil id pelamar dari sesi atau model sesuai kebutuhan
+        $email = $this->session->userdata('email');
+
+
+        // Panggil fungsi model untuk mendapatkan data kursus berdasarkan id pelamar
+        $data['Rekomendasi'] = $this->Pelamar_model->getJoinedDataById($email);
+
+        // Load view rekomendasi kursus
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/rekomendasi_kursus", $data);
         $this->load->view("layout/footer");
     }
     public function loker()

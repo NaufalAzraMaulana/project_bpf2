@@ -28,4 +28,12 @@ class Pelamar_model extends CI_Model
         $query = $this->db->get('jobs');
         return $query->result_array();
     }
+    public function getJoinedDataById($email) {
+        $this->db->select('pelamar.id,kursus.id, pelamar.nama, pelamar.email, pelamar.bakat, kursus.nama_kursus, kursus.bakat_required, kursus.gambar');
+        $this->db->from('kursus');
+        $this->db->join('pelamar', 'pelamar.bakat = kursus.bakat_required');
+        $this->db->where('pelamar.email', $email);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

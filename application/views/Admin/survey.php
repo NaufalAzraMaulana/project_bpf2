@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +30,7 @@
   <link href="<?= base_url(); ?>assets/css/main.css" rel="stylesheet">
 
   <style>
-
+    
   .container.mt-4 {
     display: flex;
     flex-direction: column;
@@ -44,7 +45,7 @@
   }
 </style>
 
-
+  
 
   <!-- =======================================================
   * Template Name: Impact
@@ -76,7 +77,7 @@
       <h3>Teknologi Informasi</h3>
       <!-- Form for Teknologi Informasi -->
       <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
-         <input type="hidden" name="talent" value="Teknologi Informasi">
+         <input type="hidden" name="talent" value="Teknologi">
          <button type="submit" class="btn btn-primary">Select</button>
       </form>
    </div>
@@ -151,13 +152,13 @@
     <a href="<?= base_url('pelamar/home')?>" class="btn btn-success btn-submit">Submit</a>
   </div>
       </div>
-
-
+      
+      
     </section><!-- End Our Services Section -->
 
+    
 
-
-
+    
     <div class="container mt-4">
       <div class="copyright">
         &copy; Copyright <strong><span>Impact</span></strong>. All Rights Reserved
@@ -179,16 +180,16 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?= base_url('assets/'); ?>vendor/aos/aos.js"></script>
-  <script src="<?= base_url('assets/'); ?>vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="<?= base_url('assets/'); ?>vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="<?= base_url('assets/'); ?>vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="<?= base_url('assets/'); ?>vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="<?= base_url('assets/'); ?>vendor/php-email-form/validate.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/aos/aos.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="<?= base_url(); ?>assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="<?= base_url('assets/'); ?>js/main.js"></script>
+  <script src="<?= base_url(); ?>assets/js/main.js"></script>
 
 </body>
 
