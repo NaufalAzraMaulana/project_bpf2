@@ -77,7 +77,7 @@
       <h3>Teknologi Informasi</h3>
       <!-- Form for Teknologi Informasi -->
       <form action="<?= base_url('Pelamar/save_talent') ?>" method="post">
-         <input type="hidden" name="talent" value="Teknologi Informasi">
+         <input type="hidden" name="talent" value="Teknologi">
          <button type="submit" class="btn btn-primary">Select</button>
       </form>
    </div>

@@ -9,6 +9,7 @@ class Admin extends CI_Controller
         $this->load->model('Dashboard_model');
         $this->load->model('Pelamar_model');
         $this->load->model('Article_model');
+        $this->load->model('Kursus_model');
         $this->load->library('upload');
     }
 
@@ -19,9 +20,9 @@ class Admin extends CI_Controller
         $data['applicantCount'] = $this->Dashboard_model->getApplicantCount();
         $data['jobCount'] = $this->Dashboard_model->getJobCount();
 
-        // $this->load->view("layout/header");
+        $this->load->view("layout/header_admin");
         $this->load->view("landingpage", $data);
-        $this->load->view("layout/footer");
+        $this->load->view("layout/footer_admin");
     }
     public function survey()
     {
@@ -202,5 +203,53 @@ class Admin extends CI_Controller
             redirect('Admin/home');
         }
     }
-    
+    public function kursus()
+    {
+        $this->load->view("layout_admin/header");
+        $this->load->view("admin/add_kursus");
+        $this->load->view("layout_admin/footer");
+    }
+
+    // ...
+
+public function add_kursus()
+{
+    // Check if admin is logged in
+    if (!$this->session->userdata('email') || $this->session->userdata('role') !== 'admin') {
+        // Redirect to the login page if not logged in as admin
+        redirect('Auth');
+    }
+
+    // Form validation
+    $this->form_validation->set_rules('nama_kursus', 'Nama Kursus', 'trim|required');
+    $this->form_validation->set_rules('deskripsi', 'Deskripsi Kursus', 'trim|required');
+    $this->form_validation->set_rules('bakat_required', 'Bakat yang Dibutuhkan', 'trim|required');
+
+    if ($this->form_validation->run() == false) {
+        // If validation fails, reload the form
+        $this->load->view("layout_admin/header");
+        $this->load->view('admin/add_kursus');
+        $this->load->view("layout_admin/footer");
+    } else {
+        // If validation succeeds, add kursus to the database
+        $data = [
+            'nama_kursus' => $this->input->post('nama_kursus'),
+            'deskripsi' => $this->input->post('deskripsi'),
+            'bakat_required' => $this->input->post('bakat_required'),
+            'pendidikan_required' => $this->input->post('pendidikan_required'), // Uncomment this line if you want to include this field
+        ];
+
+        // File upload configuration
+        // Modify this part accordingly
+
+        // Insert data into the database
+        $this->Kursus_model->insert_kursus($data);
+
+        // Redirect to the admin page or another appropriate page
+        redirect('Admin/home');
+    }
+}
+
+// ...
+
 }

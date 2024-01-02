@@ -8,8 +8,11 @@ class Pelamar extends CI_Controller
         parent::__construct();
         $this->load->model('Dashboard_model');
         $this->load->model('Pelamar_model');
-         // Load the Article_model
+        // Load the Article_model
         $this->load->model('Article_model');
+        $this->load->model('Comment_model');
+        $this->load->model('Kursus_model');
+        
     }
 
     public function index()
@@ -83,7 +86,7 @@ class Pelamar extends CI_Controller
         $email = $this->session->userdata('email');
         $data['user'] = $this->Pelamar_model->get_by_email($email);
         $this->load->view('layout/header');
-        $this->load->view('pelamar/edit_profile',$data);
+        $this->load->view('pelamar/edit_profile', $data);
         $this->load->view('layout/footer');
     }
 
@@ -118,30 +121,120 @@ class Pelamar extends CI_Controller
         $email = $this->session->userdata('email');
         $this->Pelamar_model->update_profile($email, $data);
         // Display SweetAlert confirmation
-    $this->session->set_flashdata('success', 'Profil berhasil diperbarui!');
-    redirect('pelamar/profile');
+        $this->session->set_flashdata('success', 'Profil berhasil diperbarui!');
+        redirect('pelamar/profile');
 
         // Redirect to the profile page
         redirect('pelamar/profile');
     }
 
-   // YourController.php
-public function artikel() {
-   
+    // YourController.php
+    public function artikel()
+    {
+        $data['articles'] = $this->Article_model->get_articles();
+        $data['categories'] = $this->Article_model->get_categories();
+        $data['recent_articles'] = $this->Article_model->get_recent_articles();
 
-    // Fetch articles from the model
-    $data['articles'] = $this->Article_model->get_articles();
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/artikel", $data);
+        $this->load->view("layout/footer");
+    }
+    public function detail_artikel($id)
+    {
+        // Fetch the selected article by ID
+        $data['article'] = $this->Article_model->get_article_by_id($id);
+        $data['comments'] = $this->Comment_model->get_comments_by_article($id);
+        // Fetch categories for the sidebar
+        $data['categories'] = $this->Article_model->get_categories();
+        $data['recent_articles'] = $this->Article_model->get_recent_articles();
+        $data['pelamar_id'] = $this->session->userdata('pelamar_id');
 
-    // Load the views with the fetched data
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/detail_art1", $data);
+        $this->load->view("layout/footer");
+    }
+    public function cari_artikel()
+    {
+        $keyword = $this->input->post('keyword');
+        $data['articles'] = $this->Article_model->search_articles($keyword);
+
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/artikel", $data);
+        $this->load->view("layout/footer");
+    }
+    public function artikel_by_category($category)
+    {
+        $data['articles'] = $this->Article_model->get_articles_by_category(urldecode($category));
+
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/artikel", $data);
+        $this->load->view("layout/footer");
+    }
+    public function tambah_komentar()
+    {
+        // penambahan komentar dari form
+        $article_id = $this->input->post('article_id');
+        $pelamar_id = $this->input->post('pelamar_id');
+        $comment = $this->input->post('comment');
+
+        $data = array(
+            'article_id' => $article_id,
+            'pelamar_id' => $pelamar_id,
+            'comment' => $comment
+        );
+
+        $this->Comment_model->insert_comment($data);
+
+        redirect('Pelamar/detail_artikel/' . $article_id);
+    }
+    public function kursus()
+    {
+        $email =$this->session->userdata('email'); // Replace with the actual skill of the logged-in Pelamar
+        
+        $data['Kursus_list']=$this->Kursus_model->get_all_kursus();
+        $data['joinedData'] = $this->Pelamar_model->getJoinedDataById($email);
+        
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/kursus",$data);
+        $this->load->view("layout/footer");
+    }
+    public function detail_kursus($id)
+{
+    $data['kursus'] = $this->Kursus_model->get_kursus_by_id($id);
+    $data['Kursus_detail'] = $this->Kursus_model->getKursusDetail($id);
     $this->load->view("layout/header");
-    $this->load->view("pelamar/artikel", $data);
+    $this->load->view("pelamar/detail_kursus", $data);
+    $this->load->view("layout/footer");
+}
+public function rekomendasi_kursus()
+{
+    // Ambil id pelamar dari sesi atau model sesuai kebutuhan
+    $email = $this->session->userdata('email');
+    
+
+    // Panggil fungsi model untuk mendapatkan data kursus berdasarkan id pelamar
+    $data['Rekomendasi'] = $this->Pelamar_model->getJoinedDataById($email);
+
+    // Load view rekomendasi kursus
+    $this->load->view("layout/header");
+    $this->load->view("pelamar/rekomendasi_kursus", $data);
     $this->load->view("layout/footer");
 }
 
-    public function detail_artikel() {
-        $data['articles'] = $this->Article_model->get_articles();
+
+
+
+
+    public function loker()
+    {
         $this->load->view("layout/header");
-        $this->load->view("pelamar/detail_art1",$data);
+        $this->load->view("pelamar/loker");
+        $this->load->view("layout/footer");
+    }
+    public function detail_loker()
+    {
+        $this->load->view("layout/header");
+        $this->load->view("pelamar/detail_loker");
         $this->load->view("layout/footer");
     }
 }

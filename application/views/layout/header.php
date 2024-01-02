@@ -111,12 +111,28 @@
 }
 
 #footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     width: 100%;
     
     padding: 20px 0; /* Adjust the padding as needed */
     text-align: center;
+}
+
+.portfolio-description {
+        margin-bottom: 20px; /* Sesuaikan margin-bottom sesuai kebutuhan */
+    }
+
+ .content p {
+        text-align: justify;
+        text-indent: 20px; /* Jarak indentasi pada awal paragraf */
+        line-height: 1.6; /* Jarak antar baris */
+        margin-bottom: 20px; /* Jarak antar paragraf */
+    }
+ .portfolio-wrap img {
+    width: 100%; /* Gambar akan memenuhi lebar kontainernya */
+    height: 10cm; /* Menjaga aspek rasio gambar */
+    width: 13cm; /* Menjaga aspek rasio gambar */
 }
 
 
@@ -134,8 +150,8 @@
         <ul>
           <li><a href="<?= base_url('pelamar/home')?>">Beranda</a></li>
           <li><a href="<?= site_url('Pelamar/artikel') ?>">Artikel</a></li>
-          <li><a href="#">Kursus</a></li>
-          <li><a href="#">Lowongan Kerja</a></li>
+          <li><a href="<?= site_url('Pelamar/kursus') ?>">Kursus</a></li>
+          <li><a href="<?= site_url('Pelamar/loker') ?>">Lowongan Kerja</a></li>
           <li>
             <div class="dropdown">
               <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; border: none;">

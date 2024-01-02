@@ -530,6 +530,6 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
-$config['upload_path'] = './asstes/gambar/';
+$config['upload_path'] = './assets/img/blog';
 $config['allowed_types'] = 'gif|jpg|jpeg|png';
 $config['max_size'] = 2048; // 2MB max file size

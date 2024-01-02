@@ -120,6 +120,9 @@
 }
 
 
+
+
+
   </style>
 </head>
 
@@ -134,7 +137,7 @@
         <ul>
           <li><a href="<?= base_url('admin/home')?>">Beranda</a></li>
           <li><a href="<?= site_url('admin/artikel') ?>">Artikel</a></li>
-          <li><a href="#">Kursus</a></li>
+          <li><a href="<?= site_url('admin/kursus') ?>">Kursus</a></li>
           <li><a href="#">Lowongan Kerja</a></li>
           <li>
             <div class="dropdown">

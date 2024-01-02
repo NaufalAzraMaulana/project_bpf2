@@ -54,6 +54,11 @@ class Auth extends CI_Controller
                 if (!$user || empty($user['bakat'])) {
                     // If the user has not completed the survey, redirect to the survey page
                     redirect('Pelamar/survey');
+                     // Set user email in session
+                     // Redirect to Pelamar controller or wherever you need
+                    redirect('pelamar/rekomendasi_kursus');
+
+   
                 } else {
                     redirect('pelamar/home');
                 }
@@ -114,4 +119,6 @@ class Auth extends CI_Controller
         // Redirect to a suitable page
         redirect('auth');
     }
+
+    
 }
